@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 import { Button } from '../ui/button';
 import { Avatar, AvatarImage } from '../ui/avatar';
-import { LogOut, User2, Bell, Menu, X, Home, Briefcase, FolderTree, Building2, Users, UserCircle } from 'lucide-react';
+import { LogOut, User2, Bell, Menu, X, Home, Briefcase, FolderTree, Building2, Users, UserCircle, Wrench, Hammer, Truck, ShieldCheck, HardHat, Pickaxe, ChefHat, Car, Zap, Sprout, Paintbrush, Wind, Box, Factory } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
@@ -52,39 +52,39 @@ const theme = {
 // Import categories data from CategoryCarousel
 const categories = [
   {
-    groupName: 'General Labor',
+    groupName: 'Construction & Trades',
     categories: [
-      { name: 'General', icon: '👷', displayName: 'General Labor', description: 'Everyday labor tasks and assistance' },
-      { name: 'Loading', icon: '📦', displayName: 'Loading/Unloading', description: 'Material handling and transport' },
-      { name: 'Helper', icon: '🤝', displayName: 'Helper', description: 'Assistance for various tasks' },
-      { name: 'Farming', icon: '🌾', displayName: 'Farming', description: 'Agricultural labor and farm work' }
+      { name: 'Construction', icon: <HardHat size={20} />, displayName: 'Construction', description: 'Site building & heavy construction' },
+      { name: 'Electrical', icon: <Zap size={20} />, displayName: 'Electrical', description: 'Wiring, installation & repair' },
+      { name: 'Plumbing', icon: <Wrench size={20} />, displayName: 'Plumbing', description: 'Pipe fitting & drainage solutions' },
+      { name: 'Carpentry', icon: <Hammer size={20} />, displayName: 'Carpentry', description: 'Woodworking & structural framing' }
     ]
   },
   {
-    groupName: 'Skilled Trades',
+    groupName: 'Industrial & Workshop',
     categories: [
-      { name: 'Plumbing', icon: '🔧', displayName: 'Plumbing', description: 'Pipe fitting & repair services' },
-      { name: 'Electrical', icon: '⚡', displayName: 'Electrical', description: 'Electrical installation & repair' },
-      { name: 'Carpentry', icon: '🪓', displayName: 'Carpentry', description: 'Woodworking & furniture repair' },
-      { name: 'Construction', icon: '🏗️', displayName: 'Construction', description: 'Building & construction services' }
+      { name: 'Welding', icon: <Pickaxe size={20} />, displayName: 'Welding', description: 'Metal fabrication & jointing' },
+      { name: 'Warehouse', icon: <Box size={20} />, displayName: 'Warehouse', description: 'Inventory & loading/unloading' },
+      { name: 'Factory', icon: <Factory size={20} />, displayName: 'Factory Labor', description: 'Assembly line & production' },
+      { name: 'Logistics', icon: <Truck size={20} />, displayName: 'Logistics', description: 'Supply chain & material handling' }
     ]
   },
   {
-    groupName: 'Home & Property Services',
+    groupName: 'Facility & Maintenance',
     categories: [
-      { name: 'Cleaning', icon: '🧹', displayName: 'Cleaning', description: 'Thorough cleaning services' },
-      { name: 'Gardening', icon: '🌱', displayName: 'Gardening', description: 'Garden maintenance and landscaping' },
-      { name: 'Painting', icon: '🖌️', displayName: 'Painting', description: 'Interior & exterior painting' },
-      { name: 'Security', icon: '🔒', displayName: 'Security', description: 'Watchman and security services' }
+      { name: 'HVAC', icon: <Wind size={20} />, displayName: 'HVAC', description: 'Heating, ventilation & cooling' },
+      { name: 'Painting', icon: <Paintbrush size={20} />, displayName: 'Painting', description: 'Interior & exterior finishing' },
+      { name: 'Landscaping', icon: <Sprout size={20} />, displayName: 'Landscaping', description: 'Groundskeeping & design' },
+      { name: 'Cleaning', icon: <Home size={20} />, displayName: 'Cleaning', description: 'Commercial & residential cleaning' }
     ]
   },
   {
-    groupName: 'Specialized Services',
+    groupName: 'Support Services',
     categories: [
-      { name: 'Driving', icon: '🚗', displayName: 'Driving', description: 'Transport and delivery services' },
-      { name: 'Cooking', icon: '🍳', displayName: 'Cooking', description: 'Food preparation services' },
-      { name: 'HVAC', icon: '❄️', displayName: 'HVAC Services', description: 'Heating & cooling systems' },
-      { name: 'Other', icon: '📋', displayName: 'Other Services', description: 'Additional labor categories' }
+      { name: 'Security', icon: <ShieldCheck size={20} />, displayName: 'Security', description: 'Guarding & monitoring services' },
+      { name: 'Driving', icon: <Car size={20} />, displayName: 'Driving', description: 'Commercial & personal transport' },
+      { name: 'Culinary', icon: <ChefHat size={20} />, displayName: 'Culinary Support', description: 'Kitchen assistance & prep' },
+      { name: 'General', icon: <Users size={20} />, displayName: 'General Labor', description: 'Versatile unskilled assistance' }
     ]
   }
 ];
@@ -167,17 +167,24 @@ const Navbar = () => {
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm"
+            className="sticky top-0 z-50 w-full bg-white/70 dark:bg-gray-950/60 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-800/50 shadow-sm transition-all duration-300"
         >
-            <div className="flex items-center justify-between h-16 px-6 mx-auto max-w-7xl">
+            {/* Subtle Gradient overlay for the border bottom effect */}
+            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent"></div>
+            
+            <div className="relative flex items-center justify-between h-20 px-6 mx-auto max-w-7xl">
                 <div className="flex items-center gap-4">
                     <motion.h1 
-                        className="text-3xl font-semibold text-gray-900"
-                        whileHover={{ scale: 1.05 }}
+                        className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center"
+                        whileHover={{ scale: 1.02 }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
                     >
-                        <Link to="/" className="flex items-center">
-                            Hire<span className="text-[#3B82F6] ml-2">Smart</span>
+                        <Link to="/" className="flex items-center gap-2 group">
+                            <div className="p-2 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-xl shadow-lg shadow-indigo-500/20 transition-transform duration-300 group-hover:rotate-6">
+                                <Briefcase className="text-white" size={24} strokeWidth={2.5} />
+                            </div>
+                            <span className="tracking-widest drop-shadow-sm">Hire</span>
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-blue-500 drop-shadow-sm ml-0.5">Smart</span>
                         </Link>
                     </motion.h1>
                 </div>
@@ -187,7 +194,7 @@ const Navbar = () => {
                     <Button 
                         variant="ghost" 
                         onClick={() => setShowMenu(!showMenu)} 
-                        className="text-gray-700 hover:bg-gray-100 rounded-full p-2"
+                        className="p-2 text-gray-700 rounded-full hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
                     >
                         {showMenu ? <X size={24} /> : <Menu size={24} />}
                     </Button>
@@ -212,11 +219,11 @@ const Navbar = () => {
                             animate={{ x: 0 }}
                             exit={{ x: "-100%" }}
                             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                            className="fixed top-0 left-0 w-72 h-screen bg-white z-50 shadow-2xl lg:hidden overflow-y-auto"
+                            className="fixed top-0 left-0 w-72 h-screen bg-white dark:bg-gray-950 z-50 shadow-2xl lg:hidden overflow-y-auto"
                         >
-                            <div className="flex items-center justify-between p-5 border-b border-gray-200 bg-white sticky top-0 z-10">
-                                <h1 className="text-2xl font-bold text-gray-900">Menu</h1>
-                                <Button variant="ghost" onClick={() => setShowMenu(false)} className="text-gray-700 hover:bg-gray-100 rounded-full p-2">
+                            <div className="sticky top-0 z-10 flex items-center justify-between p-5 bg-white border-b border-gray-200 dark:bg-gray-950 dark:border-gray-800">
+                                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Menu</h1>
+                                <Button variant="ghost" onClick={() => setShowMenu(false)} className="p-2 text-gray-700 rounded-full hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800">
                                     <X size={24} />
                                 </Button>
                             </div>
@@ -319,7 +326,7 @@ const Navbar = () => {
 
                 {/* Desktop Menu */}
                 <div className="items-center hidden gap-8 lg:flex">
-                    <ul className="flex items-center gap-6 font-medium text-gray-700">
+                    <ul className="flex items-center gap-6 font-medium text-gray-700 dark:text-gray-300">
                         {user && user.role === 'recruiter' ? (
                             <>
                                 <motion.li 
@@ -400,15 +407,15 @@ const Navbar = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: 10 }}
                                 transition={{ duration: 0.3 }}
-                                className="absolute top-16 left-0 right-0 z-40 p-6 bg-white border-b border-gray-200 shadow-lg"
+                                className="absolute left-0 right-0 z-40 p-6 bg-white border-b border-gray-200 shadow-lg top-16 dark:bg-gray-950 dark:border-gray-800"
                             >
                                 <div className="mx-auto max-w-7xl">
                                     <div className="flex items-center justify-between mb-6">
-                                        <h2 className="text-2xl font-bold text-gray-800">Browse by Category</h2>
+                                        <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100">Browse by Category</h2>
                                         <Button 
                                             variant="ghost" 
                                             onClick={() => setShowCategorySection(false)}
-                                            className="text-gray-500 hover:text-gray-700"
+                                            className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
                                         >
                                             <X size={20} />
                                         </Button>
@@ -416,8 +423,8 @@ const Navbar = () => {
                                     
                                     <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
                                         {categories.map((section, idx) => (
-                                            <div key={idx} className="p-4 bg-gray-50 rounded-lg">
-                                                <h3 className="mb-4 text-lg font-semibold text-gray-800 border-l-4 border-blue-500 pl-2">
+                                            <div key={idx} className="p-4 bg-gray-50 dark:bg-gray-900/50 rounded-lg">
+                                                <h3 className="mb-4 text-lg font-semibold text-gray-800 dark:text-gray-200 border-l-4 border-blue-500 dark:border-indigo-500 pl-2">
                                                     {section.groupName}
                                                 </h3>
                                                 <div className="grid grid-cols-1 gap-3">
@@ -425,16 +432,16 @@ const Navbar = () => {
                                                         <motion.button
                                                             key={index}
                                                             onClick={() => handleCategoryClick(cat.name)}
-                                                            className="flex items-center gap-3 p-3 text-left transition-all duration-300 bg-white border border-gray-200 rounded-lg hover:shadow-md hover:border-blue-500"
+                                                            className="flex items-center gap-3 p-3 text-left transition-all duration-300 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:shadow-md hover:border-blue-500 dark:hover:border-indigo-400 group"
                                                             whileHover={{ scale: 1.02 }}
                                                             whileTap={{ scale: 0.98 }}
                                                         >
-                                                            <span className="flex items-center justify-center w-10 h-10 text-xl bg-blue-100 rounded-full">
+                                                            <span className="flex items-center justify-center w-10 h-10 text-xl bg-blue-100 dark:bg-indigo-900/40 text-blue-600 dark:text-indigo-400 rounded-full group-hover:bg-blue-500 dark:group-hover:bg-indigo-500 group-hover:text-white transition-colors duration-300">
                                                                 {cat.icon}
                                                             </span>
                                                             <div>
-                                                                <h4 className="font-medium text-gray-800">{cat.displayName}</h4>
-                                                                <p className="text-xs text-gray-500">{cat.description}</p>
+                                                                <h4 className="font-medium text-gray-800 dark:text-gray-200">{cat.displayName}</h4>
+                                                                <p className="text-xs text-gray-500 dark:text-gray-400">{cat.description}</p>
                                                             </div>
                                                         </motion.button>
                                                     ))}
@@ -456,7 +463,7 @@ const Navbar = () => {
                             >
                                 <Bell
                                     onClick={() => setShowNotifications(!showNotifications)}
-                                    className="text-gray-700 transition-all hover:text-[#3B82F6]"
+                                    className="text-gray-700 transition-all hover:text-[#3B82F6] dark:text-gray-300"
                                     size={24}
                                 />
                             </motion.div>
@@ -540,12 +547,12 @@ const Navbar = () => {
                     {!user ? (
                         <div className="flex items-center gap-4">
                             <Link to="/login">
-                                <Button variant="outline" className="text-gray-700 transition-all duration-300 border-gray-700 hover:bg-gray-700 hover:text-white">
+                                <Button variant="ghost" className="text-gray-700 transition-all duration-300 hover:bg-gray-100 hover:text-indigo-600 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-indigo-400 font-medium">
                                     Login
                                 </Button>
                             </Link>
                             <Link to="/signup">
-                                <Button className="bg-[#3B82F6] hover:bg-[#2563EB] text-white transition-all duration-300">
+                                <Button className="bg-gradient-to-r from-indigo-500 to-blue-600 hover:from-indigo-600 hover:to-blue-700 text-white shadow-lg shadow-indigo-500/25 transition-all duration-300 rounded-xl px-6">
                                     Signup
                                 </Button>
                             </Link>

@@ -200,7 +200,7 @@ const OfficeInfo = () => {
           </div>
           <div className="detail-content">
             <h3 className="detail-title">Phone</h3>
-            <p>+91 9876543210</p>
+            <p>+91 8580746244</p>
           </div>
         </motion.div>
         
@@ -210,7 +210,7 @@ const OfficeInfo = () => {
           </div>
           <div className="detail-content">
             <h3 className="detail-title">Email</h3>
-            <p>info@hiresmart.com</p>
+            <p>thursday1878@gmail.com</p>
           </div>
         </motion.div>
         
@@ -250,7 +250,7 @@ const OfficeInfo = () => {
               <FaTwitter />
             </motion.a>
             <motion.a 
-              href="https://www.instagram.com/hiresmart" 
+              href="https://www.instagram.com/virtuousarcadian" 
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon"
@@ -312,7 +312,7 @@ const Contact = () => {
           email: formData.email,
           message: formData.message,
           time: new Date().toLocaleString(),
-          to_email: 'sahilkumargupta0018@gmail.com'
+          to_email: 'thursday1878@gmail.com'
         },
         EMAILJS_PUBLIC_KEY
       );

@@ -25,6 +25,10 @@
   margin-top: 0; /* Ensure no margin at the top */
 }
 
+.dark .contact-section {
+  background-color: #030712;
+}
+
 .contact-section::before {
   content: '';
   position: absolute;
@@ -33,6 +37,10 @@
   right: 0;
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.2), transparent);
+}
+
+.dark .contact-section::before {
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.4), transparent);
 }
 
 .contact-container {
@@ -58,6 +66,11 @@
   margin-bottom: 1rem;
 }
 
+.dark .section-badge {
+  background: rgba(99, 102, 241, 0.2);
+  color: rgb(129, 140, 248);
+}
+
 /* Section Title */
 .section-title {
   font-size: 2.25rem;
@@ -67,11 +80,19 @@
   line-height: 1.2;
 }
 
+.dark .section-title {
+  color: #f1f5f9;
+}
+
 .contact-subtitle {
   font-size: 1.125rem;
   color: #64748b;
   margin-bottom: 2rem;
   line-height: 1.6;
+}
+
+.dark .contact-subtitle {
+  color: #94a3b8;
 }
 
 /* Contact Form Styles */
@@ -81,6 +102,12 @@
   border-radius: 1rem;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
   border: 1px solid #e2e8f0;
+}
+
+.dark .contact-form-wrapper {
+  background: #111827;
+  border-color: #1f2937;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
 }
 
 .contact-form {
@@ -107,6 +134,10 @@
   color: #475569;
 }
 
+.dark .form-group label {
+  color: #94a3b8;
+}
+
 .form-group input,
 .form-group textarea {
   padding: 0.75rem 1rem;
@@ -116,6 +147,13 @@
   color: #1e293b;
   background-color: #f8fafc;
   transition: all 0.2s ease;
+}
+
+.dark .form-group input,
+.dark .form-group textarea {
+  background-color: #1f2937;
+  border-color: #374151;
+  color: #f1f5f9;
 }
 
 .form-group input:focus,
@@ -197,6 +235,12 @@
   border: 1px solid #e2e8f0;
 }
 
+.dark .office-info {
+  background: #111827;
+  border-color: #1f2937;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+}
+
 .office-details {
   display: flex;
   flex-direction: column;
@@ -222,6 +266,11 @@
   flex-shrink: 0;
 }
 
+.dark .detail-icon {
+  background: rgba(99, 102, 241, 0.2);
+  color: rgb(129, 140, 248);
+}
+
 .detail-content {
   flex: 1;
 }
@@ -233,11 +282,19 @@
   margin-bottom: 0.5rem;
 }
 
+.dark .detail-title {
+  color: #f1f5f9;
+}
+
 .detail-content p {
   font-size: 0.875rem;
   color: #64748b;
   line-height: 1.5;
   margin-bottom: 0.25rem;
+}
+
+.dark .detail-content p {
+  color: #94a3b8;
 }
 
 .social-links {

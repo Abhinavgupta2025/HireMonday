@@ -1,5 +1,5 @@
 .latest-jobs-section {
-  background-color: #f8fafc;
+  background-color: #030712 !important;
   padding: 6rem 0;
   position: relative;
   overflow: hidden;
@@ -13,6 +13,10 @@
   right: 0;
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.2), transparent);
+}
+
+.dark .latest-jobs-section::before {
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.4), transparent);
 }
 
 .container {
@@ -31,8 +35,8 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(99, 102, 241, 0.1);
-  color: rgb(99, 102, 241);
+  background: rgba(99, 102, 241, 0.2) !important;
+  color: rgb(129, 140, 248) !important;
   padding: 0.5rem 1rem;
   border-radius: 9999px;
   font-size: 0.875rem;
@@ -43,14 +47,14 @@
 .section-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #f1f5f9 !important;
   margin-bottom: 1rem;
   line-height: 1.2;
 }
 
 .section-description {
   font-size: 1.125rem;
-  color: #64748b;
+  color: #94a3b8 !important;
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
@@ -72,10 +76,10 @@
   justify-content: center;
   text-align: center;
   padding: 4rem 2rem;
-  background: white;
   border-radius: 1rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  border: 1px solid #e2e8f0;
+  background: #111827 !important;
+  border: 1px solid #1f2937 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
 }
 
 .empty-state-icon {
@@ -90,16 +94,21 @@
   margin-bottom: 1.5rem;
 }
 
+.dark .empty-state-icon {
+  background: rgba(99, 102, 241, 0.2);
+  color: rgb(129, 140, 248);
+}
+
 .empty-state-title {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #1e293b;
+  color: #f1f5f9 !important;
   margin-bottom: 0.75rem;
 }
 
 .empty-state-description {
   font-size: 1rem;
-  color: #64748b;
+  color: #94a3b8 !important;
   max-width: 400px;
   line-height: 1.6;
 }
@@ -125,6 +134,10 @@
   background: rgb(79, 70, 229);
   transform: translateY(-2px);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.dark .view-all-button:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
 }
 
 /* Responsive Styles */

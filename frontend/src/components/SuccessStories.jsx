@@ -38,7 +38,7 @@ const StoryCard = ({ story }) => {
         borderColor: "rgb(99, 102, 241)"
       }}
       whileTap={{ scale: 0.98 }}
-      className="story-card"
+      className="story-card bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800"
     >
       <div className="story-image">
         <img src={story.image} alt={story.title} />
@@ -50,10 +50,10 @@ const StoryCard = ({ story }) => {
       </div>
       <div className="story-content">
         <div className="story-category">Home Improvement</div>
-        <h3 className="story-title">{story.title}</h3>
+        <h3 className="story-title text-gray-800 dark:text-gray-100">{story.title}</h3>
         <div className="story-quote-container">
-          <Quote className="quote-icon" size={24} />
-          <p className="quote">{story.quote}</p>
+          <Quote className="quote-icon text-indigo-500/20" size={24} />
+          <p className="quote text-gray-600 dark:text-gray-300">{story.quote}</p>
         </div>
         <div className="story-footer">
           <div className="client-info">
@@ -61,11 +61,11 @@ const StoryCard = ({ story }) => {
               {story.client.charAt(0)}
             </div>
             <div>
-              <p className="client-name">{story.client}</p>
-              <p className="client-location">New York, USA</p>
+              <p className="client-name text-gray-800 dark:text-gray-200">{story.client}</p>
+              <p className="client-location text-gray-500 dark:text-gray-400">New York, USA</p>
             </div>
           </div>
-          <a href={story.readMoreLink} className="read-more">
+          <a href={story.readMoreLink} className="read-more text-indigo-600 dark:text-indigo-400">
             Read More <ArrowRight size={16} />
           </a>
         </div>
@@ -83,12 +83,12 @@ const SectionHeader = () => {
       transition={{ duration: 0.6 }}
       className="section-header"
     >
-      <div className="section-badge">
+      <div className="section-badge bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800/50">
         <Star size={16} fill="currentColor" />
         <span>Success Stories</span>
       </div>
-      <h2 className="section-title">Real Stories from Our Community</h2>
-      <p className="section-description">
+      <h2 className="section-title text-gray-800 dark:text-gray-100">Real Stories from Our Community</h2>
+      <p className="section-description text-gray-600 dark:text-gray-400">
         Discover how our platform has helped people find the perfect workers for their projects
       </p>
     </motion.div>
@@ -176,8 +176,8 @@ const SuccessStories = () => {
   ];
 
   return (
-    <section className="success-stories">
-      <div className="container">
+    <section className="success-stories bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900 py-20 border-t border-gray-100 dark:border-gray-800">
+      <div className="container mx-auto px-4">
         <SectionHeader />
       </div>
       

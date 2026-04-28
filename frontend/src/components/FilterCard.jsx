@@ -41,7 +41,7 @@ const FilterCard = ({ isVisible, onClose }) => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed top-20 left-5 w-64 bg-white rounded-xl shadow-lg border border-gray-100 z-50 animate-fadeIn overflow-hidden">
+    <div className="fixed top-20 left-5 w-64 bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-100 dark:border-gray-800 z-50 animate-fadeIn overflow-hidden">
       <div className="bg-gradient-to-r from-indigo-600 to-indigo-700 p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -61,14 +61,14 @@ const FilterCard = ({ isVisible, onClose }) => {
         <RadioGroup value={selectedValue} onValueChange={changeHandler}>
           {filterData.map((data, index) => (
             <div key={index} className="mb-6">
-              <h2 className="mb-3 text-xs font-semibold text-indigo-600 uppercase tracking-wider">{data.fitlerType}</h2>
+              <h2 className="mb-3 text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">{data.fitlerType}</h2>
               <div className="space-y-2">
                 {data.array.map((item, idx) => {
                   const itemId = `id${index}-${idx}`;
                   return (
                     <div
                       key={itemId}
-                      className="flex items-center gap-2 py-1.5 px-2 rounded-lg transition-colors duration-200 hover:bg-indigo-50"
+                      className="flex items-center gap-2 py-1.5 px-2 rounded-lg transition-colors duration-200 hover:bg-indigo-50 dark:hover:bg-indigo-900/30"
                     >
                       <RadioGroupItem
                         value={item}
@@ -77,7 +77,7 @@ const FilterCard = ({ isVisible, onClose }) => {
                       />
                       <Label
                         htmlFor={itemId}
-                        className="text-sm text-gray-700 cursor-pointer"
+                        className="text-sm text-gray-700 dark:text-gray-300 cursor-pointer"
                       >
                         {item}
                       </Label>

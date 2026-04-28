@@ -35,19 +35,19 @@ const Jobs = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -50 }}
             transition={{ duration: 0.5 }}
-            className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100"
+            className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900"
         >
             <Navbar />
             <div className='px-4 mx-auto mt-8 max-w-7xl sm:px-6 lg:px-8'>
                 <div className='flex flex-col gap-8'>
                     <div className='flex justify-between items-center'>
-                        <h1 className="text-2xl font-bold text-gray-800">Available Jobs</h1>
+                        <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-100">Available Jobs</h1>
                         <button 
                             onClick={toggleFilter}
-                            className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border border-gray-200 hover:bg-gray-50 transition-colors"
+                            className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                         >
-                            <SlidersHorizontal className="h-5 w-5 text-indigo-600" />
-                            <span className="text-gray-700 font-medium">Filter</span>
+                            <SlidersHorizontal className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
+                            <span className="text-gray-700 dark:text-gray-300 font-medium">Filter</span>
                         </button>
                     </div>
                     
@@ -65,13 +65,13 @@ const Jobs = () => {
                                     transition={{ duration: 0.5 }}
                                     className="mt-20 text-center"
                                 >
-                                    <div className="inline-block p-6 rounded-full bg-gray-100 mb-4">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <div className="inline-block p-6 rounded-full bg-gray-100 dark:bg-gray-800 mb-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>
                                     </div>
-                                    <h3 className="text-xl font-medium text-gray-700">No jobs found</h3>
-                                    <p className="mt-2 text-gray-500">Try adjusting your search or filters</p>
+                                    <h3 className="text-xl font-medium text-gray-700 dark:text-gray-300">No jobs found</h3>
+                                    <p className="mt-2 text-gray-500 dark:text-gray-400">Try adjusting your search or filters</p>
                                 </motion.div>
                             ) : (
                                 <div className='h-[88vh] overflow-y-auto pb-5 pr-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent'>

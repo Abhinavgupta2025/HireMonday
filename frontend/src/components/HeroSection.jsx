@@ -17,7 +17,7 @@ const StatCard = ({ icon: Icon, value, label }) => (
     whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
     transition={{ type: "spring", stiffness: 300 }}
   >
-    <div className="p-2 mb-2 text-pink-400 bg-white/10 rounded-full">
+    <div className="p-2 mb-2 text-indigo-400 bg-white/10 rounded-full">
       <Icon size={20} />
     </div>
     <span className="text-2xl font-bold text-white">{value}</span>
@@ -32,7 +32,7 @@ const FeatureCard = ({ icon: Icon, title, description }) => (
     whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
     transition={{ type: "spring", stiffness: 300 }}
   >
-    <div className="p-2 mr-4 text-pink-400 bg-white/10 rounded-full">
+    <div className="p-2 mr-4 text-indigo-400 bg-white/10 rounded-full">
       <Icon size={20} />
     </div>
     <div>
@@ -67,16 +67,17 @@ const HeroSection = () => {
         <Swiper
             loop={false}
             slidesPerView={1}
+            autoHeight={true}
             modules={[Autoplay, EffectFade]}
             effect="fade"
             autoplay={{
                 delay: 5000,
                 disableOnInteraction: false,
             }}
-            className="relative w-full h-screen overflow-x-hidden"
+            className="relative w-full min-h-screen overflow-hidden"
         >
             <SwiperSlide>
-                <div className="relative flex flex-col items-center justify-center min-h-screen px-4 text-center">
+                <div className="relative flex flex-col items-center justify-center min-h-[100svh] px-4 py-32 text-center">
                     {/* Background Image with Overlay */}
                     <div
                         className="absolute inset-0 w-full h-full bg-center bg-cover"
@@ -92,8 +93,8 @@ const HeroSection = () => {
                     
                     {/* Decorative Elements */}
                     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_20%,rgba(236,72,153,0.15),transparent_50%)]"></div>
-                        <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_80%,rgba(139,92,246,0.15),transparent_50%)]"></div>
+                        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.15),transparent_50%)]"></div>
+                        <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.15),transparent_50%)]"></div>
                     </div>
 
                     {/* Content Container */}
@@ -105,7 +106,7 @@ const HeroSection = () => {
                             transition={{ delay: 0.2, duration: 0.5 }}
                             className="inline-flex items-center gap-1.5 px-4 py-1.5 mb-6 text-sm font-medium text-white bg-white/10 backdrop-blur-md rounded-full border border-white/20"
                         >
-                            <Sparkles size={16} className="text-pink-400" />
+                            <Sparkles size={16} className="text-indigo-400" />
                             <span>Find Your Next Opportunity</span>
                         </motion.div>
 
@@ -118,7 +119,7 @@ const HeroSection = () => {
                         >
                             <h1 className="text-4xl font-bold tracking-tight text-white md:text-6xl lg:text-7xl">
                                 <span className="block">Find Skilled</span>
-                                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">Labor Workers</span>
+                                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-blue-400">Labor Workers</span>
                                 <span className="block">Near You</span>
                             </h1>
                             <p className="max-w-2xl mx-auto mt-4 text-lg text-gray-300 md:text-xl">
@@ -135,11 +136,11 @@ const HeroSection = () => {
                         >
                             <div className="relative w-full max-w-2xl">
                                 {/* Glowing Border */}
-                                <div className="absolute -inset-[2px] bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-xl blur-md opacity-70 animate-pulse z-0" />
+                                <div className="absolute -inset-[2px] bg-gradient-to-r from-indigo-500 via-blue-500 to-purple-500 rounded-xl blur-md opacity-70 animate-pulse z-0" />
 
-                                <div className="relative z-10 flex items-center justify-between gap-3 px-5 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow-[0_0_30px_rgba(0,0,0,0.2)] transition-all duration-500 hover:shadow-[0_0_40px_rgba(236,72,153,0.2)]">
+                                <div className="relative z-10 flex items-center justify-between gap-3 px-5 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow-[0_0_30px_rgba(0,0,0,0.2)] transition-all duration-500 hover:shadow-[0_0_40px_rgba(99,102,241,0.2)]">
                                     <div className="flex items-center w-full gap-3">
-                                        <Search className="text-pink-400 shrink-0" size={22} />
+                                        <Search className="text-indigo-400 shrink-0" size={22} />
                                         <input
                                             type="text"
                                             value={query}
@@ -149,20 +150,20 @@ const HeroSection = () => {
                                         />
                                     </div>
 
-                                    {/* Button */}
+                                    {/* Search Button */}
                                     <motion.button
                                         whileTap={{ scale: 0.95 }}
                                         whileHover={{
-                                            scale: 1.05,
-                                            backgroundColor: '#ec4899',
-                                            boxShadow: '0px 0px 20px rgba(236,72,153,0.5)',
+                                            scale: 1.03,
+                                            boxShadow: '0px 0px 25px rgba(255,255,255,0.4)',
                                         }}
-                                        transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                                        transition={{ type: 'spring', stiffness: 400, damping: 12 }}
                                         onClick={searchJobHandler}
-                                        className="flex items-center gap-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-5 py-2.5 rounded-lg font-semibold shadow-lg shadow-pink-500/30 transition-all duration-300"
+                                        className="group relative flex items-center justify-center gap-2 overflow-hidden bg-white/90 hover:bg-white text-indigo-600 px-8 py-3 rounded-xl font-bold shadow-xl shadow-white/10 transition-all duration-300 pointer-events-auto cursor-pointer border border-white/40 w-full sm:w-auto mt-4 sm:mt-0 backdrop-blur-md"
                                     >
-                                        <span>Find</span>
-                                        <ArrowRight size={18} />
+                                        <div className="absolute inset-0 w-full h-full bg-indigo-600/10 -translate-x-full skew-x-[-15deg] group-hover:translate-x-full transition-transform duration-700 ease-out" />
+                                        <span className="relative z-10 whitespace-nowrap">Find Jobs</span>
+                                        <Search size={18} className="relative z-10 ml-1 group-hover:rotate-12 transition-transform duration-300" />
                                     </motion.button>
                                 </div>
                             </div>
@@ -207,11 +208,11 @@ const HeroSection = () => {
                             className="flex flex-wrap items-center justify-center gap-4 mt-4"
                         >
                             <div className="flex items-center gap-2 px-4 py-2 text-sm text-white bg-white/10 backdrop-blur-md rounded-full border border-white/20">
-                                <MapPin size={16} className="text-pink-400" />
+                                <MapPin size={16} className="text-indigo-400" />
                                 <span>Local Jobs</span>
                             </div>
                             <div className="flex items-center gap-2 px-4 py-2 text-sm text-white bg-white/10 backdrop-blur-md rounded-full border border-white/20">
-                                <Briefcase size={16} className="text-purple-400" />
+                                <Briefcase size={16} className="text-blue-400" />
                                 <span>Popular Categories</span>
                             </div>
                         </motion.div>

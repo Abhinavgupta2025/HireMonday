@@ -31,7 +31,7 @@ const HelpCenter = () => {
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-600 mr-2">•</span>
-                  <span>Apply for positions</span>
+                  <span>Apply for positions in our company</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-600 mr-2">•</span>

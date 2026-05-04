@@ -9,6 +9,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "parcel": "^2.16.4"
+    "bcrypt": "^6.0.0",
+    "parcel": "^2.16.4",
+    "validator": "^13.15.35"
   }
 }

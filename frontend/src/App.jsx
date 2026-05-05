@@ -21,7 +21,7 @@ import StudentsList from './components/StudentsList';
 import AboutUs from './pages/AboutUs';
 import Contact from './components/Contact';
 import BlogSection from './components/BlogSection';
-import HelpCenter from './pages/HelpCenter';
+// import HelpCenter from './pages/HelpCenter';
 
 const appRouter = createHashRouter([
   {
@@ -100,10 +100,10 @@ const appRouter = createHashRouter([
     path: "/blog",
     element: <BlogSection />
   },
-  {
-    path: "/help",
-    element: <HelpCenter />
-  },
+  // {
+  //   path: "/help",
+  //   element: <HelpCenter />
+  // },
   // Admin routes
   {
     path: "/admin/companies",

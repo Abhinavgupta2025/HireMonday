@@ -19,8 +19,6 @@ export const applyJob = async (req, res) => {
 
         const existingApplication = await Application.findOne({ job: jobId, applicant: userId });
 
-        a
-
         // check if the jobs exists
         const job = await Job.findById(jobId);
         if (!job) {
@@ -293,4 +291,3 @@ export const giveFeedbackToApplicant = async (req, res) => {
         });
     }
 };
-r

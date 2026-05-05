@@ -43,7 +43,7 @@ const TableHeader = ({ title, subtitle }) => (
     <h2 className="text-3xl md:text-4xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 mb-2">
       {title}
     </h2>
-    {subtitle && <p className="text-center text-gray-500">{subtitle}</p>}
+    {subtitle && <p className="text-center text-gray-300">{subtitle}</p>}
   </motion.div>
 );
 
@@ -55,7 +55,7 @@ const SearchBar = ({ value, onChange }) => (
       placeholder="Search companies..."
       value={value}
       onChange={onChange}
-      className="pl-10 pr-4 py-2 w-full rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
+      className="pl-10 pr-4 py-2 w-full rounded-lg border border-white/20 bg-white/10 text-white placeholder-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/50 transition-all"
     />
   </div>
 );
@@ -81,31 +81,31 @@ const CompanyRow = ({ company, index, onEdit }) => (
     initial={{ opacity: 0, scale: 0.95 }}
     animate={{ opacity: 1, scale: 1 }}
     transition={{ delay: index * 0.05 }}
-    whileHover={{ scale: 1.01, backgroundColor: "rgba(243, 244, 246, 0.8)" }}
-    className="hover:bg-gray-50/80 transition-all duration-300"
+    whileHover={{ scale: 1.01, backgroundColor: "rgba(255, 255, 255, 0.05)" }}
+    className="hover:bg-white/5 transition-all duration-300"
   >
     <td className="px-6 py-4">
-      <Avatar className="w-10 h-10 border border-gray-200 shadow-md">
+      <Avatar className="w-10 h-10 border border-white/20 shadow-md">
         <AvatarImage src={company.logo} className="object-cover rounded-full" />
       </Avatar>
     </td>
     <td className="px-6 py-4">
       <div>
-        <div className="text-lg font-semibold tracking-wide text-gray-800">{company.name}</div>
-        <div className="text-sm text-gray-500">{company.email}</div>
+        <div className="text-lg font-semibold tracking-wide text-white">{company.name}</div>
+        <div className="text-sm text-gray-400">{company.email}</div>
       </div>
     </td>
     <td className="px-6 py-4">
-      <div className="flex items-center gap-2 text-gray-600">
+      <div className="flex items-center gap-2 text-gray-300">
         <Calendar size={16} />
         <span className="text-sm">{company.createdAt.split('T')[0]}</span>
       </div>
     </td>
     <td className="px-6 py-4 text-right">
       <Popover>
-        <PopoverTrigger>
+        <PopoverTrigger asChild>
           <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full">
-            <MoreHorizontal className="h-4 w-4 text-gray-500 hover:text-blue-600 transition-colors" />
+            <MoreHorizontal className="h-4 w-4 text-gray-400 hover:text-indigo-400 transition-colors" />
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-48 bg-white border border-gray-200 text-gray-800 shadow-lg rounded-lg">
@@ -131,10 +131,10 @@ const EmptyState = () => (
     className="py-12 text-center"
   >
     <div className="flex justify-center mb-4">
-      <Building2 size={48} className="text-gray-300" />
+      <Building2 size={48} className="text-gray-600" />
     </div>
-    <h3 className="text-xl font-semibold text-gray-700 mb-2">No companies found</h3>
-    <p className="text-gray-500 mb-6">There are no companies registered in the system yet.</p>
+    <h3 className="text-xl font-semibold text-white mb-2">No companies found</h3>
+    <p className="text-gray-400 mb-6">There are no companies registered in the system yet.</p>
   </motion.div>
 );
 
@@ -176,7 +176,7 @@ const CompaniesTable = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen bg-gray-50 rounded-2xl shadow-lg border border-gray-200 transition-all duration-500 px-6 md:px-12 py-10 font-[Inter]"
+      className="w-full bg-white/10 rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.3)] border border-white/20 backdrop-blur-xl transition-all duration-500 px-6 sm:px-8 py-8 font-[Inter]"
     >
       <TableHeader 
         title="🔥 Registered Companies" 
@@ -191,11 +191,11 @@ const CompaniesTable = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="rounded-xl bg-white border border-gray-200 shadow-sm overflow-hidden"
+        className="rounded-xl bg-white/5 border border-white/10 overflow-hidden"
       >
         {filterCompany.length > 0 ? (
-          <table className="w-full text-sm text-left text-gray-800">
-            <thead className="text-xs text-gray-500 uppercase bg-gray-50 tracking-wider">
+          <table className="w-full text-sm text-left text-white">
+            <thead className="text-xs text-gray-300 uppercase bg-white/10 tracking-wider">
               <tr>
                 <th className="px-6 py-4">Logo</th>
                 <th className="px-6 py-4">Company</th>
@@ -203,7 +203,7 @@ const CompaniesTable = () => {
                 <th className="px-6 py-4 text-right">Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200">
+            <tbody className="divide-y divide-white/10">
               <AnimatePresence>
                 {filterCompany.map((company, index) => (
                   <CompanyRow 

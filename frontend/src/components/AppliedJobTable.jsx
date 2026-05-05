@@ -68,29 +68,29 @@ const AppliedJobTable = () => {
             <Table>
                 <TableCaption>A list of your applied jobs</TableCaption>
                 <TableHeader>
-                    <TableRow>
-                        <TableHead>Date</TableHead>
-                        <TableHead>Job Role</TableHead>
-                        <TableHead>Company</TableHead>
-                        <TableHead>Status</TableHead>
-                        <TableHead>Payment Status</TableHead>
-                        <TableHead>Rating</TableHead>
-                        <TableHead>Feedback</TableHead>
+                    <TableRow className="border-b border-white/20">
+                        <TableHead className="text-gray-300">Date</TableHead>
+                        <TableHead className="text-gray-300">Job Role</TableHead>
+                        <TableHead className="text-gray-300">Company</TableHead>
+                        <TableHead className="text-gray-300">Status</TableHead>
+                        <TableHead className="text-gray-300">Payment Status</TableHead>
+                        <TableHead className="text-gray-300">Rating</TableHead>
+                        <TableHead className="text-gray-300">Feedback</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
                     {
                         allAppliedJobs.length <= 0 ? (
-                            <TableRow>
-                                <TableCell colSpan={7} className="text-center">
+                            <TableRow className="border-b border-white/10 hover:bg-transparent">
+                                <TableCell colSpan={7} className="text-center text-gray-400 py-8">
                                     You haven't applied to any job yet.
                                 </TableCell>
                             </TableRow>
                         ) : allAppliedJobs.map((appliedJob) => (
-                            <TableRow key={appliedJob._id}>
-                                <TableCell>{appliedJob?.createdAt?.split("T")[0]}</TableCell>
-                                <TableCell>{appliedJob.job?.title}</TableCell>
-                                <TableCell>{appliedJob.job?.company?.name}</TableCell>
+                            <TableRow key={appliedJob._id} className="border-b border-white/10 hover:bg-white/5 transition-colors">
+                                <TableCell className="text-white font-medium">{appliedJob?.createdAt?.split("T")[0]}</TableCell>
+                                <TableCell className="text-gray-300">{appliedJob.job?.title}</TableCell>
+                                <TableCell className="text-gray-300">{appliedJob.job?.company?.name}</TableCell>
                                 <TableCell>
                                     <Badge className={`${appliedJob?.status === "rejected"
                                         ? 'bg-red-400'

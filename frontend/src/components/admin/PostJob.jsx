@@ -304,7 +304,7 @@ const PostJob = () => {
 
         experience: "",
 
-        position: 0,
+        position: "",
 
         companyId: ""
 

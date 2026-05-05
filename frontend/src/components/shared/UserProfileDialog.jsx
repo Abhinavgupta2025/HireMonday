@@ -3,7 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Avatar, AvatarImage } from '../ui/avatar';
 import { Button } from '../ui/button';
 import { LogOut, User } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 // Animation variants
@@ -80,6 +80,7 @@ const MenuItem = ({ icon, label, onClick, isDanger = false }) => {
 
 // User Profile Dialog Component
 const UserProfileDialog = ({ open, setOpen, user, onLogout }) => {
+  const navigate = useNavigate();
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="sm:max-w-xs p-0 overflow-hidden bg-white rounded-lg border border-gray-200 shadow-lg">
@@ -105,7 +106,7 @@ const UserProfileDialog = ({ open, setOpen, user, onLogout }) => {
               onClick={() => {
                 setOpen(false);
                 // Navigate to profile page
-                window.location.href = '/profile';
+                navigate('/profile');
               }} 
             />
           </div>

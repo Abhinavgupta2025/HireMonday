@@ -1,4 +1,4 @@
-import { User } from "../Models/user.model.js";
+import { User } from "../models/user.model.js";
 import bcrypt from "bcrypt";
 import validator from "validator";
 import jwt from "jsonwebtoken";
@@ -244,7 +244,7 @@ export const updateProfile = async (req, res) => {
 export const getAllStudents = async (req, res) => {
     try {
         const students = await User.find({ role: "student" }).select(
-            "fullname phoneNumber profile.profilePhoto profile.skills profile.bio"
+            "_id fullname  email phoneNumber profile.profilePhoto profile.skills profile.bio"
         );
 
         return res.status(200).json({

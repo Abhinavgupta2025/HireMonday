@@ -54,10 +54,7 @@ const HeroSection = () => {
 
     // Array of background images to be used dynamically
     const backgroundImage = [
-        'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         'https://images.unsplash.com/photo-1485083269755-a7b559a4fe5e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y29uc3RydWN0aW9ufGVufDB8MHwwfHx8MA%3D%3D',
-        'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNvbnN0cnVjdGlvbnxlbnwwfDB8MHx8fDA%3D'
     ];
 
     // Select one random image from the array for background
@@ -134,38 +131,24 @@ const HeroSection = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.5, duration: 0.6, ease: 'easeOut' }}
                         >
-                            <div className="relative w-full max-w-2xl">
-                                {/* Glowing Border */}
-                                <div className="absolute -inset-[2px] bg-gradient-to-r from-indigo-500 via-blue-500 to-purple-500 rounded-xl blur-md opacity-70 animate-pulse z-0" />
-
-                                <div className="relative z-10 flex items-center justify-between gap-3 px-5 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow-[0_0_30px_rgba(0,0,0,0.2)] transition-all duration-500 hover:shadow-[0_0_40px_rgba(99,102,241,0.2)]">
-                                    <div className="flex items-center w-full gap-3">
-                                        <Search className="text-indigo-400 shrink-0" size={22} />
-                                        <input
-                                            type="text"
-                                            value={query}
-                                            onChange={(e) => setQuery(e.target.value)}
-                                            placeholder="Search for jobs, companies, or skills..."
-                                            className="w-full text-base font-medium tracking-wide text-white bg-transparent outline-none placeholder:text-gray-400"
-                                        />
-                                    </div>
-
-                                    {/* Search Button */}
-                                    <motion.button
-                                        whileTap={{ scale: 0.95 }}
-                                        whileHover={{
-                                            scale: 1.03,
-                                            boxShadow: '0px 0px 25px rgba(255,255,255,0.4)',
-                                        }}
-                                        transition={{ type: 'spring', stiffness: 400, damping: 12 }}
-                                        onClick={searchJobHandler}
-                                        className="group relative flex items-center justify-center gap-2 overflow-hidden bg-white/90 hover:bg-white text-indigo-600 px-8 py-3 rounded-xl font-bold shadow-xl shadow-white/10 transition-all duration-300 pointer-events-auto cursor-pointer border border-white/40 w-full sm:w-auto mt-4 sm:mt-0 backdrop-blur-md"
-                                    >
-                                        <div className="absolute inset-0 w-full h-full bg-indigo-600/10 -translate-x-full skew-x-[-15deg] group-hover:translate-x-full transition-transform duration-700 ease-out" />
-                                        <span className="relative z-10 whitespace-nowrap">Find Jobs</span>
-                                        <Search size={18} className="relative z-10 ml-1 group-hover:rotate-12 transition-transform duration-300" />
-                                    </motion.button>
+                            <div className="flex w-full max-w-2xl shadow-xl rounded-full items-center gap-2 mx-auto overflow-hidden bg-white p-2">
+                                <div className="pl-4 text-gray-400">
+                                    <Search size={22} />
                                 </div>
+                                <input
+                                    type="text"
+                                    value={query}
+                                    onChange={(e) => setQuery(e.target.value)}
+                                    placeholder="Search for jobs, companies, or skills..."
+                                    className="outline-none border-none w-full py-3 text-gray-800 bg-transparent placeholder-gray-400 font-medium text-lg"
+                                />
+                                <button
+                                    onClick={searchJobHandler}
+                                    className="bg-indigo-600 hover:bg-indigo-700 transition-colors text-white px-8 py-3 rounded-full font-bold shadow-md whitespace-nowrap flex items-center gap-2"
+                                >
+                                    <Search size={18} />
+                                    <span>Search</span>
+                                </button>
                             </div>
                         </motion.div>
 

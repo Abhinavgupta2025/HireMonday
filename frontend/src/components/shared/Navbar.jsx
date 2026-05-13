@@ -134,7 +134,7 @@ const Navbar = () => {
 
     const handleNotificationClick = async (id) => {
         try {
-            const response = await fetch(`http://localhost:3000/api/v1/notifications/${id}/read`, {
+            const response = await fetch(`https://hiremonday.onrender.com/api/v1/notifications/${id}/read`, {
                 method: 'DELETE',
                 credentials: 'include',
             });

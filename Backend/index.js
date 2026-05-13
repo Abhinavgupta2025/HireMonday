@@ -1,8 +1,8 @@
+import "./config.js";
 import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import bodyParser from "body-parser";
-import dotenv from "dotenv";
 import connectDB from "./utils/db.js";
 import userRoute from "./routes/user.route.js";
 import companyRoute from "./routes/company.route.js";
@@ -12,8 +12,6 @@ import notificationRoutes from "./routes/notification.routes.js";
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from '@google/generative-ai';
 import session from 'express-session';
 import passport from 'passport';
-
-dotenv.config({});
 
 const app = express();
 

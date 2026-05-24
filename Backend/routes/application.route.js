@@ -1,8 +1,8 @@
 import express from "express";
 import isAuthenticated from "../middlewares/isAuthenticated.js";
-import { applyJob, getApplicants, getAppliedJobs, updateStatus,rateApplication } from "../controllers/application.controller.js";
-import { getAcceptedApplications } from '../controllers/application.controller.js';
-import { createCheckoutSession,markAsPaid , giveFeedbackToApplicant} from '../controllers/application.controller.js';
+import { applyJob, getApplicants, getAppliedJobs, updateStatus,rateApplication } from "../Controllers/application.controller.js";
+import { getAcceptedApplications } from '../Controllers/application.controller.js';
+import { createCheckoutSession,markAsPaid , giveFeedbackToApplicant} from '../Controllers/application.controller.js';
 
 
 const router = express.Router();

@@ -5,7 +5,8 @@ pipeline {
 
         stage('Clone Repo') {
             steps {
-                git 'https://github.com/Abhinavgupta2025/HireMonday.git'
+                git branch: 'main',
+                url: 'https://github.com/Abhinavgupta2025/HireMonday.git'
             }
         }
 

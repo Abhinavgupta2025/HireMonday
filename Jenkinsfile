@@ -10,14 +10,6 @@ pipeline {
             }
         }
 
-        stage('Build Backend') {
-            steps {
-                dir('Backend') {
-                    sh 'docker build -t thursday1878/backend:latest .'
-                }
-            }
-        }
-
         stage('Build Frontend') {
             steps {
                 dir('frontend') {
@@ -39,21 +31,14 @@ pipeline {
             }
         }
 
-        stage('Push Backend') {
-            steps {
-                sh 'docker push thursday1878/backend:latest'
-            }
-        }
-
         stage('Push Frontend') {
             steps {
                 sh 'docker push thursday1878/frontend:latest'
             }
         }
 
-        stage('Deploy Kubernetes') {
+        stage('Deploy Frontend') {
             steps {
-                sh 'kubectl rollout restart deployment backend-deployment -n nginx-ns'
                 sh 'kubectl rollout restart deployment frontend-deployment -n nginx-ns'
             }
         }

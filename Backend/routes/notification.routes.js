@@ -1,6 +1,6 @@
 import express from "express";
 import isAuthenticated from "../middlewares/isAuthenticated.js";
-import { getUserNotifications, markNotificationAsRead } from "../Controllers/job.controller.js";
+import { getUserNotifications, markNotificationAsRead } from "../controllers/job.controller.js";
 
 const router = express.Router();
 

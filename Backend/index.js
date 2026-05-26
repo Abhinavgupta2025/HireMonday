@@ -34,6 +34,11 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+// Simple health check endpoint
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok' });
+});
+
 const PORT = process.env.PORT || 3000;
 
 const MODEL_NAME = "gemini-1.5-flash";

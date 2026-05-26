@@ -117,7 +117,7 @@ const HeroSection = () => {
                             <h1 className="text-4xl font-bold tracking-tight text-white md:text-6xl lg:text-7xl">
                                 <span className="block">Find Skilled</span>
                                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-blue-400">Labor Workers</span>
-                                <span className="block">Near You CI/cd  not working</span>
+                                <span className="block">Near You CI/cd  CHECK </span>
                             </h1>
                             <p className="max-w-2xl mx-auto mt-4 text-lg text-gray-300 md:text-xl">
                                 Connect with qualified professionals for your projects or find work opportunities in your area

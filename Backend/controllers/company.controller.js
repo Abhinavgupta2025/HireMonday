@@ -11,13 +11,20 @@ export const registerCompany = async (req, res) => {
                 success: false
             });
         }
+        if (!req.id) {
+            return res.status(401).json({
+                message: "User ID missing in request. Authentication may have failed.",
+                success: false
+            });
+        }
+        // Check if a company with the same name already exists
         let company = await Company.findOne({ name: companyName });
         if (company) {
             return res.status(400).json({
                 message: "You can't register same company.",
                 success: false
-            })
-        };
+            });
+        }
         company = await Company.create({
             name: companyName,
             userId: req.id

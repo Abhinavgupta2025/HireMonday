@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { 
   Building2, 
   Briefcase, 
@@ -8,7 +8,8 @@ import {
   Users, 
   FileText,
   Eye,
-  Plus
+  Plus,
+  Search
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import './CompanySetup.css';
@@ -139,6 +140,22 @@ const EmptyState = () => {
 const AdminJobsTable = () => {
   const { allAdminJobs } = useSelector((store) => store.job);
   const navigate = useNavigate();
+  const location = useLocation();
+  
+  const [searchTerm, setSearchTerm] = React.useState(location.state?.filterByCompany || "");
+  const [filteredJobs, setFilteredJobs] = React.useState(allAdminJobs);
+
+  React.useEffect(() => {
+    const term = searchTerm.toLowerCase();
+    const result = allAdminJobs.filter(job => 
+      term 
+        ? job?.title?.toLowerCase().includes(term) || 
+          job?.company?.name?.toLowerCase().includes(term) ||
+          job?.location?.toLowerCase().includes(term)
+        : true
+    );
+    setFilteredJobs(result);
+  }, [allAdminJobs, searchTerm]);
 
   return (
     <motion.div
@@ -153,12 +170,31 @@ const AdminJobsTable = () => {
         subtitle="Manage and track active career opportunities"
       />
 
+      {/* Search Filter Bar */}
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+        <div className="relative w-full sm:w-80">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
+          <input
+            type="text"
+            placeholder="Search jobs, companies or cities..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="pl-10 pr-4 py-2.5 w-full admin-glass-input rounded-xl text-sm focus:outline-none"
+          />
+        </div>
+      </div>
+
+      {/* Reactive Count Indicator */}
+      <div className="text-2xs font-mono text-gray-500 uppercase tracking-widest mb-4">
+        Showing {filteredJobs.length} active listing{filteredJobs.length !== 1 ? 's' : ''} matching criteria
+      </div>
+
       <AnimatePresence>
-        {allAdminJobs.length === 0 ? (
+        {filteredJobs.length === 0 ? (
           <EmptyState />
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-            {allAdminJobs.map((job, index) => (
+            {filteredJobs.map((job, index) => (
               <JobCard 
                 key={job._id}
                 job={job}

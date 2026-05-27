@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import axios from 'axios'
 import { JOB_API_END_POINT } from '@/utils/constant'
 import { toast } from 'sonner'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { Loader2, Briefcase, MapPin, Clock, Award, Users, Building2, ArrowLeft, Rocket } from 'lucide-react'
 import { motion } from 'framer-motion'
 import Navbar from '../shared/Navbar'
@@ -83,7 +83,7 @@ const FormField = ({ label, name, value, onChange, type = "text", placeholder, i
   </motion.div>
 );
 
-const CompanySelect = ({ companies, onSelect }) => (
+const CompanySelect = ({ companies, onSelect, value }) => (
   <motion.div 
     variants={itemVariants}
     className="col-span-1 md:col-span-2 mb-4 flex flex-col"
@@ -92,7 +92,7 @@ const CompanySelect = ({ companies, onSelect }) => (
       <Building2 size={16} className="text-[#d4af37]" />
       Select Company
     </Label>
-    <Select onValueChange={onSelect}>
+    <Select onValueChange={onSelect} value={value}>
       <SelectTrigger className="w-full admin-glass-input rounded-xl px-4 py-3 text-white border border-white/10 hover:border-[#d4af37]/35 focus:ring-0 focus:outline-none">
         <SelectValue placeholder="Choose one of your registered companies" className="text-gray-500 placeholder:text-gray-500" />
       </SelectTrigger>
@@ -172,8 +172,15 @@ const PostJob = () => {
     });
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
 
     const { companies } = useSelector(store => store.company);
+
+    React.useEffect(() => {
+        if (location.state?.preSelectedCompanyId) {
+            setInput(prev => ({ ...prev, companyId: location.state.preSelectedCompanyId }));
+        }
+    }, [location.state, companies]);
 
     const changeEventHandler = (e) => {
         setInput({ ...input, [e.target.name]: e.target.value });
@@ -291,6 +298,7 @@ const PostJob = () => {
                             <CompanySelect 
                                 companies={companies} 
                                 onSelect={selectChangeHandler} 
+                                value={companies.find(c => c._id === input.companyId)?.name?.toLowerCase()}
                             />
                         )}
                     </motion.div>

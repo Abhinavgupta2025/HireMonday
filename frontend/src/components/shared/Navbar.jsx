@@ -16,36 +16,36 @@ import UserProfileDialog from './UserProfileDialog';
 // Color theme constants
 const theme = {
   primary: {
-    main: '#3B82F6', // Blue
-    light: '#60A5FA',
-    dark: '#2563EB',
-    contrast: '#FFFFFF'
+    main: '#D4AF37', // Gold
+    light: '#F3E5AB',
+    dark: '#AA771C',
+    contrast: '#000000'
   },
   secondary: {
-    main: '#10B981', // Green
-    light: '#34D399',
-    dark: '#059669',
-    contrast: '#FFFFFF'
+    main: '#C0C0C0', // Silver
+    light: '#E6E6E6',
+    dark: '#9CA3AF',
+    contrast: '#000000'
   },
   accent: {
-    main: '#8B5CF6', // Purple
-    light: '#A78BFA',
-    dark: '#7C3AED',
-    contrast: '#FFFFFF'
+    main: '#D4AF37', // Gold
+    light: '#F3E5AB',
+    dark: '#AA771C',
+    contrast: '#000000'
   },
   background: {
-    default: '#FFFFFF',
-    paper: '#F9FAFB',
-    dark: '#F3F4F6'
+    default: '#090a0c',
+    paper: '#111317',
+    dark: '#000000'
   },
   text: {
-    primary: '#1F2937',
-    secondary: '#4B5563',
-    light: '#9CA3AF'
+    primary: '#F3F4F6',
+    secondary: '#9CA3AF',
+    light: '#6B7280'
   },
   border: {
-    light: '#E5E7EB',
-    medium: '#D1D5DB'
+    light: 'rgba(255, 255, 255, 0.05)',
+    medium: 'rgba(255, 255, 255, 0.1)'
   }
 };
 
@@ -167,24 +167,24 @@ const Navbar = () => {
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="sticky top-0 z-50 w-full bg-white/70 dark:bg-gray-950/60 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-800/50 shadow-sm transition-all duration-300"
+            className="sticky top-0 z-50 w-full bg-[#090a0c]/85 backdrop-blur-xl border-b border-white/5 shadow-2xl transition-all duration-300"
         >
             {/* Subtle Gradient overlay for the border bottom effect */}
-            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent"></div>
+            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/20 to-transparent"></div>
             
             <div className="relative flex items-center justify-between h-20 px-6 mx-auto max-w-7xl">
                 <div className="flex items-center gap-4">
                     <motion.h1 
-                        className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center"
+                        className="text-3xl font-bold tracking-tight text-gray-100 flex items-center"
                         whileHover={{ scale: 1.02 }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
                     >
                         <Link to="/" className="flex items-center gap-2 group">
-                            <div className="p-2 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-xl shadow-lg shadow-indigo-500/20 transition-transform duration-300 group-hover:rotate-6">
-                                <Briefcase className="text-white" size={24} strokeWidth={2.5} />
+                            <div className="p-2 bg-gradient-to-br from-[#d4af37] to-[#aa771c] rounded-xl shadow-lg shadow-amber-500/10 transition-transform duration-300 group-hover:rotate-6">
+                                <Briefcase className="text-black" size={24} strokeWidth={2.5} />
                             </div>
-                            <span className="tracking-widest drop-shadow-sm">Hire</span>
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-blue-500 drop-shadow-sm ml-0.5">Smart</span>
+                            <span className="tracking-widest drop-shadow-sm text-gray-200">Hire</span>
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#fcd34d] to-[#d4af37] drop-shadow-sm ml-0.5 font-semibold">Smart</span>
                         </Link>
                     </motion.h1>
                 </div>
@@ -219,11 +219,11 @@ const Navbar = () => {
                             animate={{ x: 0 }}
                             exit={{ x: "-100%" }}
                             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                            className="fixed top-0 left-0 w-72 h-screen bg-white dark:bg-gray-950 z-50 shadow-2xl lg:hidden overflow-y-auto"
+                            className="fixed top-0 left-0 w-72 h-screen bg-[#090a0c] z-50 shadow-2xl lg:hidden overflow-y-auto border-r border-white/5"
                         >
-                            <div className="sticky top-0 z-10 flex items-center justify-between p-5 bg-white border-b border-gray-200 dark:bg-gray-950 dark:border-gray-800">
-                                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Menu</h1>
-                                <Button variant="ghost" onClick={() => setShowMenu(false)} className="p-2 text-gray-700 rounded-full hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800">
+                            <div className="sticky top-0 z-10 flex items-center justify-between p-5 bg-[#090a0c] border-b border-white/5">
+                                <h1 className="text-2xl font-bold text-gray-100">Menu</h1>
+                                <Button variant="ghost" onClick={() => setShowMenu(false)} className="p-2 text-gray-400 rounded-full hover:bg-white/5">
                                     <X size={24} />
                                 </Button>
                             </div>
@@ -232,20 +232,20 @@ const Navbar = () => {
                                     {user && user.role === 'recruiter' ? (
                                         <>
                                             <li>
-                                                <Link to="/admin/companies" className="flex items-center gap-3 p-3 text-gray-800 font-medium rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                                                    <Building2 size={20} className="text-blue-500" />
+                                                <Link to="/admin/companies" className="flex items-center gap-3 p-3 text-gray-300 font-medium rounded-lg hover:bg-[#d4af37]/10 hover:text-[#d4af37] transition-colors">
+                                                    <Building2 size={20} className="text-[#d4af37]" />
                                                     <span>Companies</span>
                                                 </Link>
                                             </li>
                                             <li>
-                                                <Link to="/admin/jobs" className="flex items-center gap-3 p-3 text-gray-800 font-medium rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                                                    <Briefcase size={20} className="text-blue-500" />
+                                                <Link to="/admin/jobs" className="flex items-center gap-3 p-3 text-gray-300 font-medium rounded-lg hover:bg-[#d4af37]/10 hover:text-[#d4af37] transition-colors">
+                                                    <Briefcase size={20} className="text-[#d4af37]" />
                                                     <span>Jobs</span>
                                                 </Link>
                                             </li>
                                             <li>
-                                                <Link to="/admin/jobs/accepted" className="flex items-center gap-3 p-3 text-gray-800 font-medium rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                                                    <Users size={20} className="text-blue-500" />
+                                                <Link to="/admin/jobs/accepted" className="flex items-center gap-3 p-3 text-gray-300 font-medium rounded-lg hover:bg-[#d4af37]/10 hover:text-[#d4af37] transition-colors">
+                                                    <Users size={20} className="text-[#d4af37]" />
                                                     <span>Applicants</span>
                                                 </Link>
                                             </li>
@@ -253,25 +253,56 @@ const Navbar = () => {
                                     ) : (
                                         <>
                                             <li>
-                                                <Link to="/" className="flex items-center gap-3 p-3 text-gray-800 font-medium rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                                                    <Home size={20} className="text-blue-500" />
+                                                <Link to="/" className="flex items-center gap-3 p-3 text-gray-300 font-medium rounded-lg hover:bg-[#d4af37]/10 hover:text-[#d4af37] transition-colors">
+                                                    <Home size={20} className="text-[#d4af37]" />
                                                     <span>Home</span>
                                                 </Link>
                                             </li>
                                             <li>
-                                                <Link to="/jobs" className="flex items-center gap-3 p-3 text-gray-800 font-medium rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                                                    <Briefcase size={20} className="text-blue-500" />
+                                                <Link to="/jobs" className="flex items-center gap-3 p-3 text-gray-300 font-medium rounded-lg hover:bg-[#d4af37]/10 hover:text-[#d4af37] transition-colors">
+                                                    <Briefcase size={20} className="text-[#d4af37]" />
                                                     <span>Work</span>
                                                 </Link>
                                             </li>
                                             <li>
                                                 <button 
                                                     onClick={toggleCategorySection} 
-                                                    className="flex items-center gap-3 p-3 w-full text-left text-gray-800 font-medium rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                                                    className="flex items-center gap-3 p-3 w-full text-left text-gray-300 font-medium rounded-lg hover:bg-[#d4af37]/10 hover:text-[#d4af37] transition-colors"
                                                 >
-                                                    <FolderTree size={20} className="text-blue-500" />
+                                                    <FolderTree size={20} className="text-[#d4af37]" />
                                                     <span>Categories</span>
                                                 </button>
+                                                <AnimatePresence>
+                                                    {showCategorySection && (
+                                                        <motion.div 
+                                                            initial={{ opacity: 0, height: 0 }}
+                                                            animate={{ opacity: 1, height: "auto" }}
+                                                            exit={{ opacity: 0, height: 0 }}
+                                                            className="pl-6 pr-2 py-2 space-y-4 bg-white/5 rounded-lg mt-1 border border-white/5 overflow-hidden"
+                                                        >
+                                                            {categories.map((section, idx) => (
+                                                                <div key={idx} className="space-y-1.5">
+                                                                    <h4 className="text-xs font-semibold text-[#d4af37] tracking-wider uppercase">{section.groupName}</h4>
+                                                                    <div className="grid grid-cols-1 gap-1">
+                                                                        {section.categories.map((cat, index) => (
+                                                                            <button
+                                                                                key={index}
+                                                                                onClick={() => {
+                                                                                    handleCategoryClick(cat.name);
+                                                                                    setShowMenu(false);
+                                                                                }}
+                                                                                className="flex items-center gap-2 p-2 w-full text-left text-xs text-gray-300 hover:text-white transition-colors"
+                                                                            >
+                                                                                <span className="text-[#d4af37]">{cat.icon}</span>
+                                                                                <span>{cat.displayName}</span>
+                                                                            </button>
+                                                                        ))}
+                                                                    </div>
+                                                                </div>
+                                                            ))}
+                                                        </motion.div>
+                                                    )}
+                                                </AnimatePresence>
                                             </li>
                                         </>
                                     )}
@@ -280,14 +311,14 @@ const Navbar = () => {
                                     {!user && (
                                         <>
                                             <li>
-                                                <Link to="/login" className="flex items-center gap-3 p-3 text-gray-800 font-medium rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                                                    <User2 size={20} className="text-blue-500" />
+                                                <Link to="/login" className="flex items-center gap-3 p-3 text-gray-300 font-medium rounded-lg hover:bg-[#d4af37]/10 hover:text-[#d4af37] transition-colors">
+                                                    <User2 size={20} className="text-[#d4af37]" />
                                                     <span>Login</span>
                                                 </Link>
                                             </li>
                                             <li>
-                                                <Link to="/signup" className="flex items-center gap-3 p-3 text-gray-800 font-medium rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                                                    <UserCircle size={20} className="text-blue-500" />
+                                                <Link to="/signup" className="flex items-center gap-3 p-3 text-gray-300 font-medium rounded-lg hover:bg-[#d4af37]/10 hover:text-[#d4af37] transition-colors">
+                                                    <UserCircle size={20} className="text-[#d4af37]" />
                                                     <span>Signup</span>
                                                 </Link>
                                             </li>
@@ -297,21 +328,21 @@ const Navbar = () => {
                                 
                                 {/* User Profile Section in Mobile Menu */}
                                 {user && (
-                                    <div className="mt-8 p-4 bg-white rounded-xl border border-gray-200 shadow-sm">
+                                    <div className="mt-8 p-4 bg-[#111317]/50 rounded-xl border border-white/5 shadow-sm">
                                         <div className="flex items-center gap-3">
-                                            <Avatar className="border-2 border-blue-200">
+                                            <Avatar className="border-2 border-[#d4af37]/30">
                                                 <AvatarImage src={user?.profile?.profilePhoto} alt="@profile" />
                                             </Avatar>
                                             <div>
-                                                <h4 className="font-semibold text-gray-900">{user?.fullname}</h4>
-                                                <p className="text-xs text-gray-500">{user?.email}</p>
+                                                <h4 className="font-semibold text-gray-200">{user?.fullname}</h4>
+                                                <p className="text-xs text-gray-400">{user?.email}</p>
                                             </div>
                                         </div>
-                                        <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
-                                            <Link to="/profile" className="text-sm text-blue-600 hover:text-blue-800 transition-colors">Profile</Link>
+                                        <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/5">
+                                            <Link to="/profile" className="text-sm text-[#d4af37] hover:underline transition-colors">Profile</Link>
                                             <Button 
                                                 variant="ghost" 
-                                                className="text-sm text-red-600 hover:text-red-800 hover:bg-red-50 transition-colors" 
+                                                className="text-sm text-amber-500 hover:text-[#d4af37] hover:bg-amber-500/10 transition-colors" 
                                                 onClick={logoutHandler}
                                             >
                                                 Logout <LogOut size={16} className="ml-1" />
@@ -326,11 +357,11 @@ const Navbar = () => {
 
                 {/* Desktop Menu */}
                 <div className="items-center hidden gap-8 lg:flex">
-                    <ul className="flex items-center gap-6 font-medium text-gray-700 dark:text-gray-300">
+                    <ul className="flex items-center gap-6 font-light text-gray-400">
                         {user && user.role === 'recruiter' ? (
                             <>
                                 <motion.li 
-                                    className="hover:text-[#3B82F6] transition-all duration-300"
+                                    className="hover:text-[#d4af37] transition-all duration-300"
                                     whileHover={{ scale: 1.05 }}
                                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                 >
@@ -340,7 +371,7 @@ const Navbar = () => {
                                     </Link>
                                 </motion.li>
                                 <motion.li 
-                                    className="hover:text-[#3B82F6] transition-all duration-300"
+                                    className="hover:text-[#d4af37] transition-all duration-300"
                                     whileHover={{ scale: 1.05 }}
                                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                 >
@@ -350,7 +381,7 @@ const Navbar = () => {
                                     </Link>
                                 </motion.li>
                                 <motion.li 
-                                    className="hover:text-[#3B82F6] transition-all duration-300"
+                                    className="hover:text-[#d4af37] transition-all duration-300"
                                     whileHover={{ scale: 1.05 }}
                                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                 >
@@ -363,7 +394,7 @@ const Navbar = () => {
                         ) : (
                             <>
                                 <motion.li 
-                                    className="hover:text-[#3B82F6] transition-all duration-300"
+                                    className="hover:text-[#d4af37] transition-all duration-300"
                                     whileHover={{ scale: 1.05 }}
                                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                 >
@@ -373,7 +404,7 @@ const Navbar = () => {
                                     </Link>
                                 </motion.li>
                                 <motion.li 
-                                    className="hover:text-[#3B82F6] transition-all duration-300"
+                                    className="hover:text-[#d4af37] transition-all duration-300"
                                     whileHover={{ scale: 1.05 }}
                                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                 >
@@ -383,7 +414,7 @@ const Navbar = () => {
                                     </Link>
                                 </motion.li>
                                 <motion.li 
-                                    className="hover:text-[#3B82F6] transition-all duration-300"
+                                    className="hover:text-[#d4af37] transition-all duration-300"
                                     whileHover={{ scale: 1.05 }}
                                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                 >
@@ -407,15 +438,15 @@ const Navbar = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: 10 }}
                                 transition={{ duration: 0.3 }}
-                                className="absolute left-0 right-0 z-40 p-6 bg-white border-b border-gray-200 shadow-lg top-16 dark:bg-gray-950 dark:border-gray-800"
+                                className="absolute left-0 right-0 z-40 p-6 bg-[#090a0c]/95 backdrop-blur-2xl border-b border-white/5 shadow-2xl top-16"
                             >
                                 <div className="mx-auto max-w-7xl">
                                     <div className="flex items-center justify-between mb-6">
-                                        <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100">Browse by Category</h2>
+                                        <h2 className="text-2xl font-light text-gray-200">Browse by Category</h2>
                                         <Button 
                                             variant="ghost" 
                                             onClick={() => setShowCategorySection(false)}
-                                            className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                                            className="text-gray-400 hover:text-white hover:bg-white/5"
                                         >
                                             <X size={20} />
                                         </Button>
@@ -423,8 +454,8 @@ const Navbar = () => {
                                     
                                     <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
                                         {categories.map((section, idx) => (
-                                            <div key={idx} className="p-4 bg-gray-50 dark:bg-gray-900/50 rounded-lg">
-                                                <h3 className="mb-4 text-lg font-semibold text-gray-800 dark:text-gray-200 border-l-4 border-blue-500 dark:border-indigo-500 pl-2">
+                                            <div key={idx} className="p-4 bg-[#111317]/50 border border-white/5 rounded-lg">
+                                                <h3 className="mb-4 text-lg font-medium text-gray-200 border-l-4 border-[#d4af37] pl-2">
                                                     {section.groupName}
                                                 </h3>
                                                 <div className="grid grid-cols-1 gap-3">
@@ -432,16 +463,16 @@ const Navbar = () => {
                                                         <motion.button
                                                             key={index}
                                                             onClick={() => handleCategoryClick(cat.name)}
-                                                            className="flex items-center gap-3 p-3 text-left transition-all duration-300 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:shadow-md hover:border-blue-500 dark:hover:border-indigo-400 group"
+                                                            className="flex items-center gap-3 p-3 text-left transition-all duration-300 bg-[#16181d] border border-white/5 rounded-lg hover:shadow-lg hover:border-[#d4af37]/30 group"
                                                             whileHover={{ scale: 1.02 }}
                                                             whileTap={{ scale: 0.98 }}
                                                         >
-                                                            <span className="flex items-center justify-center w-10 h-10 text-xl bg-blue-100 dark:bg-indigo-900/40 text-blue-600 dark:text-indigo-400 rounded-full group-hover:bg-blue-500 dark:group-hover:bg-indigo-500 group-hover:text-white transition-colors duration-300">
+                                                            <span className="flex items-center justify-center w-10 h-10 text-xl bg-[#d4af37]/10 text-[#d4af37] rounded-full group-hover:bg-[#d4af37] group-hover:text-black transition-colors duration-300">
                                                                 {cat.icon}
                                                             </span>
                                                             <div>
-                                                                <h4 className="font-medium text-gray-800 dark:text-gray-200">{cat.displayName}</h4>
-                                                                <p className="text-xs text-gray-500 dark:text-gray-400">{cat.description}</p>
+                                                                <h4 className="font-light text-gray-200 group-hover:text-[#d4af37] transition-colors">{cat.displayName}</h4>
+                                                                <p className="text-xs text-gray-400">{cat.description}</p>
                                                             </div>
                                                         </motion.button>
                                                     ))}
@@ -463,7 +494,7 @@ const Navbar = () => {
                             >
                                 <Bell
                                     onClick={() => setShowNotifications(!showNotifications)}
-                                    className="text-gray-700 transition-all hover:text-[#3B82F6] dark:text-gray-300"
+                                    className="text-gray-400 transition-all hover:text-[#d4af37]"
                                     size={24}
                                 />
                             </motion.div>
@@ -471,7 +502,7 @@ const Navbar = () => {
                                 <motion.span 
                                     initial={{ scale: 0 }}
                                     animate={{ scale: 1 }}
-                                    className="absolute flex items-center justify-center w-5 h-5 text-xs font-medium text-white bg-red-600 rounded-full -top-2 -right-2 shadow-md"
+                                    className="absolute flex items-center justify-center w-5 h-5 text-xs font-medium text-black bg-[#d4af37] rounded-full -top-2 -right-2 shadow-md"
                                 >
                                     {notifications.length}
                                 </motion.span>
@@ -482,16 +513,16 @@ const Navbar = () => {
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: 10 }}
                                     transition={{ duration: 0.2 }}
-                                    className="absolute right-0 z-50 mt-2 overflow-hidden bg-white border border-gray-200 rounded-xl shadow-xl w-80 max-h-96"
+                                    className="absolute right-0 z-50 mt-2 overflow-hidden bg-[#090a0c] border border-white/5 rounded-xl shadow-2xl w-80 max-h-96"
                                 >
-                                    <div className="p-3 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-indigo-50">
-                                        <h3 className="text-sm font-semibold text-gray-800">Notifications</h3>
+                                    <div className="p-3 border-b border-white/5 bg-[#111317]">
+                                        <h3 className="text-sm font-semibold text-gray-200">Notifications</h3>
                                     </div>
                                     
                                     {notifications.length === 0 ? (
                                         <div className="flex flex-col items-center justify-center p-6 text-center">
-                                            <Bell className="w-10 h-10 text-gray-300 mb-2" />
-                                            <p className="text-sm text-gray-500">No new notifications</p>
+                                            <Bell className="w-10 h-10 text-gray-600 mb-2" />
+                                            <p className="text-sm text-gray-400">No new notifications</p>
                                         </div>
                                     ) : (
                                         <div className="overflow-y-auto max-h-80">
@@ -501,22 +532,22 @@ const Navbar = () => {
                                                     initial={{ opacity: 0, x: -10 }}
                                                     animate={{ opacity: 1, x: 0 }}
                                                     exit={{ opacity: 0, x: 10 }}
-                                                    className="flex items-start p-4 transition-all duration-300 border-b hover:bg-gray-50 group"
+                                                    className="flex items-start p-4 transition-all duration-300 border-b border-white/5 hover:bg-white/5 group"
                                                 >
                                                     <div className="flex-shrink-0 mr-3">
-                                                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-100 text-blue-600">
+                                                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[#d4af37]/10 text-[#d4af37]">
                                                             <Bell size={16} />
                                                         </div>
                                                     </div>
                                                     <div className="flex-1 min-w-0">
-                                                        <p className="text-sm text-gray-700 group-hover:text-gray-900">{notif.message}</p>
-                                                        <p className="text-xs text-gray-400 mt-1">
+                                                        <p className="text-sm text-gray-300 group-hover:text-gray-100">{notif.message}</p>
+                                                        <p className="text-xs text-gray-500 mt-1">
                                                             {new Date(notif.createdAt).toLocaleString()}
                                                         </p>
                                                     </div>
                                                     <button
                                                         onClick={() => handleNotificationClick(notif._id)}
-                                                        className="flex-shrink-0 ml-2 text-xs font-medium text-blue-600 transition hover:text-blue-800 hover:underline"
+                                                        className="flex-shrink-0 ml-2 text-xs font-medium text-[#d4af37] transition hover:text-[#aa771c] hover:underline"
                                                     >
                                                         Dismiss
                                                     </button>
@@ -526,13 +557,13 @@ const Navbar = () => {
                                     )}
                                     
                                     {notifications.length > 0 && (
-                                        <div className="p-2 border-t border-gray-100 bg-gray-50">
+                                        <div className="p-2 border-t border-white/5 bg-[#111317]">
                                             <button 
                                                 onClick={() => {
                                                     notifications.forEach(notif => handleNotificationClick(notif._id));
                                                     setShowNotifications(false);
                                                 }}
-                                                className="w-full py-1.5 text-xs font-medium text-center text-blue-600 transition hover:text-blue-800 hover:underline"
+                                                className="w-full py-1.5 text-xs font-medium text-center text-[#d4af37] transition hover:text-[#aa771c] hover:underline"
                                             >
                                                 Mark all as read
                                             </button>
@@ -542,17 +573,17 @@ const Navbar = () => {
                             )}
                         </div>
                     )}
-
+ 
                     {/* User Auth Buttons */}
                     {!user ? (
                         <div className="flex items-center gap-4">
                             <Link to="/login">
-                                <Button variant="ghost" className="text-gray-700 transition-all duration-300 hover:bg-gray-100 hover:text-indigo-600 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-indigo-400 font-medium">
+                                <Button variant="ghost" className="text-gray-400 transition-all duration-300 hover:bg-white/5 hover:text-[#d4af37] font-light">
                                     Login
                                 </Button>
                             </Link>
                             <Link to="/signup">
-                                <Button className="bg-gradient-to-r from-indigo-500 to-blue-600 hover:from-indigo-600 hover:to-blue-700 text-white shadow-lg shadow-indigo-500/25 transition-all duration-300 rounded-xl px-6">
+                                <Button className="bg-gradient-to-r from-[#d4af37] to-[#aa771c] hover:from-[#aa771c] hover:to-[#8a5f14] text-black shadow-lg shadow-amber-500/10 transition-all duration-300 rounded-xl px-6 font-light">
                                     Signup
                                 </Button>
                             </Link>
@@ -560,7 +591,7 @@ const Navbar = () => {
                     ) : (
                         <div className="flex items-center gap-4">
                             <Avatar 
-                                className="cursor-pointer hover:ring-2 hover:ring-blue-500 transition-all"
+                                className="cursor-pointer hover:ring-2 hover:ring-[#d4af37] transition-all"
                                 onClick={() => setIsProfileOpen(true)}
                             >
                                 <AvatarImage src={user?.profile?.profilePhoto || "https://www.shutterstock.com/image-vector/circle-line-simple-design-logo-600nw-2174926871.jpg"} alt="profile" />

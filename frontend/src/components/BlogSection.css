@@ -3,12 +3,12 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #030712 !important;
+  background-color: #090a0c !important;
 }
 
 .blog-section {
   padding: 4rem 0;
-  background-color: #030712 !important;
+  background-color: #090a0c !important;
 }
 
 .blog-container {
@@ -38,23 +38,23 @@
 
 .blog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 2rem;
   margin-bottom: 3rem;
 }
 
 .blog-card {
-  background: #111827 !important;
-  border-radius: 12px;
+  background: #111317 !important;
+  border-radius: 1.5rem;
   overflow: hidden;
-  border: 1px solid #1f2937 !important;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .blog-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  border-color: rgba(212, 175, 55, 0.25) !important;
 }
 
 .blog-card-image {
@@ -90,7 +90,7 @@
 }
 
 .blog-card-link {
-  color: #4f46e5;
+  color: #d4af37;
   text-decoration: none;
   font-weight: 500;
   display: inline-block;
@@ -98,7 +98,7 @@
 }
 
 .blog-card-link:hover {
-  color: #4338ca;
+  color: #aa771c;
 }
 
 .blog-cta {

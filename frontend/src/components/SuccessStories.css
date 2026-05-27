@@ -37,12 +37,13 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  background-color: rgba(99, 102, 241, 0.2) !important;
-  color: rgb(129, 140, 248) !important;
+  background-color: rgba(212, 175, 55, 0.1) !important;
+  color: #d4af37 !important;
   border-radius: 9999px;
   font-weight: 500;
   font-size: 0.875rem;
   margin-bottom: 1rem;
+  border: 1px solid rgba(212, 175, 55, 0.15);
 }
 
 .section-title {
@@ -82,18 +83,24 @@
 
 /* Story card styling */
 .story-card {
-  background-color: #1f2937 !important;
-  border-radius: 1rem;
+  background-color: #111317 !important;
+  border-radius: 1.5rem;
   overflow: hidden;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   height: 500px;
   min-width: 380px;
   max-width: 450px;
   flex: 1;
   display: flex;
   flex-direction: column;
-  border: 1px solid #374151 !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
   position: relative;
+  transition: all 0.3s ease;
+}
+
+.story-card:hover {
+  border-color: rgba(212, 175, 55, 0.25) !important;
+  transform: translateY(-4px);
 }
 
 /* Story image section */
@@ -129,19 +136,19 @@
   align-items: center;
   gap: 0.25rem;
   padding: 0.25rem 0.75rem;
-  background-color: rgba(99, 102, 241, 0.9);
-  color: white;
+  background-color: #d4af37;
+  color: black;
   border-radius: 9999px;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
   z-index: 2;
 }
 
 .story-category {
   display: inline-block;
   padding: 0.25rem 0.75rem;
-  background-color: rgba(99, 102, 241, 0.1);
-  color: rgb(99, 102, 241);
+  background-color: rgba(212, 175, 55, 0.1);
+  color: #d4af37;
   border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 500;
@@ -175,7 +182,7 @@
   position: absolute;
   top: -0.5rem;
   left: -0.5rem;
-  color: rgba(99, 102, 241, 0.2);
+  color: rgba(212, 175, 55, 0.05);
   z-index: 0;
 }
 
@@ -208,8 +215,8 @@
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 9999px;
-  background-color: rgb(99, 102, 241);
-  color: white;
+  background-color: #d4af37;
+  color: black;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -233,7 +240,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: rgb(99, 102, 241);
+  color: #d4af37;
   font-weight: 500;
   font-size: 0.875rem;
   text-decoration: none;
@@ -241,7 +248,7 @@
 }
 
 .read-more:hover {
-  color: rgb(79, 70, 229);
+  color: #aa771c;
   text-decoration: underline;
 }
 
@@ -257,29 +264,22 @@
   width: 3rem;
   height: 3rem;
   border-radius: 9999px;
-  background-color: white;
-  color: rgb(99, 102, 241);
-  border: 1px solid #e5e7eb;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #d4af37;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.dark .slider-arrow {
-  background-color: #1f2937;
-  color: rgb(129, 140, 248);
-  border-color: #374151;
 }
 
 .slider-arrow:hover {
-  background-color: rgb(99, 102, 241);
-  color: white;
-  border-color: rgb(99, 102, 241);
+  background-color: #d4af37;
+  color: black;
+  border-color: #d4af37;
   transform: translateY(-2px);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
 }
 
 .slider-arrow:active {
@@ -311,5 +311,11 @@
   
   .section-title {
     font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .story-card {
+    min-width: calc(100vw - 3rem) !important;
   }
 }

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Elite Career Portal - Hero</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#004c6e",
+                        "secondary-fixed-dim": "#89ceff",
+                        "primary-fixed": "#e1e0ff",
+                        "surface-dim": "#0e131f",
+                        "error-container": "#93000a",
+                        "surface-tint": "#c0c1ff",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "on-tertiary-container": "#400071",
+                        "surface-container-highest": "#2f3542",
+                        "on-tertiary-fixed-variant": "#6900b3",
+                        "on-secondary": "#00344d",
+                        "on-primary-container": "#0d0096",
+                        "surface-container-low": "#161c28",
+                        "tertiary-fixed-dim": "#ddb7ff",
+                        "on-surface": "#dde2f3",
+                        "on-primary": "#1000a9",
+                        "on-background": "#dde2f3",
+                        "surface-container": "#1a202c",
+                        "primary-container": "#8083ff",
+                        "on-tertiary-fixed": "#2c0051",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "on-error-container": "#ffdad6",
+                        "inverse-primary": "#494bd6",
+                        "surface-container-lowest": "#080e1a",
+                        "surface": "#0e131f",
+                        "on-surface-variant": "#c7c4d7",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-secondary-container": "#00344e",
+                        "tertiary": "#ddb7ff",
+                        "secondary-container": "#00a2e6",
+                        "surface-container-high": "#242a36",
+                        "on-tertiary": "#490080",
+                        "background": "#0e131f",
+                        "surface-bright": "#343946",
+                        "inverse-on-surface": "#2b303d",
+                        "error": "#ffb4ab",
+                        "on-error": "#690005",
+                        "outline": "#908fa0",
+                        "secondary": "#89ceff",
+                        "on-primary-fixed": "#07006c",
+                        "primary": "#c0c1ff",
+                        "inverse-surface": "#dde2f3",
+                        "tertiary-container": "#b76dff",
+                        "tertiary-fixed": "#f0dbff",
+                        "outline-variant": "#464554",
+                        "secondary-fixed": "#c9e6ff",
+                        "surface-variant": "#2f3542"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "48px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "64px",
+                        "sm": "12px",
+                        "xs": "4px",
+                        "xl": "80px",
+                        "gutter": "24px",
+                        "md": "24px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "label-md": ["JetBrains Mono"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-input:focus-within {
+            border-color: rgba(192, 193, 255, 0.5); /* primary color */
+            box-shadow: 0 0 15px rgba(192, 193, 255, 0.1);
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #494bd6 0%, #00a2e6 100%);
+        }
+        .primary-gradient:hover {
+            background: linear-gradient(135deg, #0d0096 0%, #004c6e 100%);
+        }
+        .stat-card-glow:hover {
+            box-shadow: 0 0 20px rgba(192, 193, 255, 0.05);
+            border-color: rgba(192, 193, 255, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased overflow-x-hidden min-h-screen flex flex-col">
+<!-- Header / TopAppBar -->
+<header class="bg-surface/60 dark:bg-surface/60 backdrop-blur-xl fixed top-0 w-full z-50 border-b border-white/5 shadow-none">
+<div class="flex justify-between items-center px-margin-mobile py-4 max-w-[1440px] mx-auto md:px-margin-desktop">
+<div class="flex items-center gap-2 text-primary dark:text-primary transition-opacity opacity-80">
+<span class="material-symbols-outlined font-headline-md text-headline-md font-bold tracking-tighter text-primary dark:text-primary">token</span>
+<span class="font-headline-md text-headline-md font-bold tracking-tighter text-primary dark:text-primary">EXECUTIVE.IO</span>
+</div>
+<div class="flex items-center">
+<img alt="Premium Logo" class="w-8 h-8 rounded-full border border-white/10" data-alt="A sophisticated close-up portrait of a professional man with a neat beard, wearing a dark tailored suit. The lighting is dramatic and moody, emphasizing a premium, executive aesthetic. The background is completely out of focus, composed of deep dark blues and charcoal grays." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc3NHV4hJ4P3f1co3IIWx_V0Ts3OgpEK7mc-W8mBotMAJV7tJ7KI8gOXHDPe7AoxzT7cejWpFCzeNdJRPxB333cLkxWzn4oI_qVAt8LQ4P9f_GdF148IzXgnOgaWts1hJmhvQdJQ3Ru1IJ9Sfwten0YC1i_lFcD2xqbBs9IQsEYblFzYBp96cRuSaMEPMPu4FiYCMfifgLNJ5KlYbSmE2MwfVWI572b0YvEeU9NC5JKjjIjfaRa45bZL4UJg5XQsQOxMxPlkL0rE7x"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow pt-24 pb-20 px-margin-mobile md:px-margin-desktop relative">
+<!-- Ambient Background Gradients -->
+<div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+<div class="absolute -top-20 left-1/2 -translate-x-1/2 w-full h-[600px] bg-primary/10 blur-[120px] rounded-full opacity-50"></div>
+<div class="absolute top-[40%] -right-[20%] w-[80%] h-[400px] bg-secondary-container/10 blur-[100px] rounded-full opacity-30"></div>
+<div class="absolute bottom-[10%] -left-[20%] w-[60%] h-[500px] bg-tertiary-container/10 blur-[120px] rounded-full opacity-20"></div>
+</div>
+<div class="relative z-10 flex flex-col items-center text-center mt-8 mb-12">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-display-lg md:text-display-lg text-on-surface mb-4 max-w-2xl leading-tight">
+                Find Your <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Elite Career Path</span>
+</h1>
+<p class="font-body-md text-body-md md:font-body-lg md:text-body-lg text-on-surface-variant max-w-md mx-auto mb-10">
+                Connect with top-tier companies and exclusive opportunities in the tech and creative industries.
+            </p>
+<!-- Search Interface -->
+<div class="w-full max-w-lg mb-16">
+<div class="glass-panel glass-input rounded-xl p-2 flex flex-col gap-2 transition-all duration-300">
+<div class="flex items-center px-3 py-2 bg-transparent">
+<span class="material-symbols-outlined text-outline mr-3" style="font-variation-settings: 'wght' 300;">search</span>
+<input class="w-full bg-transparent border-none text-on-surface focus:ring-0 placeholder-on-surface-variant font-body-md text-body-md p-0" placeholder="Job title, keyword or company" type="text"/>
+</div>
+<div class="h-px w-full bg-white/5 my-1"></div>
+<div class="flex items-center px-3 py-2 bg-transparent">
+<span class="material-symbols-outlined text-outline mr-3" style="font-variation-settings: 'wght' 300;">location_on</span>
+<input class="w-full bg-transparent border-none text-on-surface focus:ring-0 placeholder-on-surface-variant font-body-md text-body-md p-0" placeholder="Location or Remote" type="text"/>
+</div>
+<button class="w-full primary-gradient text-white font-label-md text-label-md rounded-lg py-3 mt-2 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
+                        Search Opportunities
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Stat Cards -->
+<div class="w-full max-w-lg flex flex-col gap-4">
+<!-- Card 1 -->
+<div class="glass-panel rounded-xl p-5 flex items-center justify-between transition-all duration-300 stat-card-glow relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary to-secondary opacity-50 group-hover:opacity-100 transition-opacity"></div>
+<div class="flex flex-col text-left pl-3">
+<span class="font-headline-md text-headline-md text-on-surface mb-1">12k+</span>
+<span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase">Active Roles</span>
+</div>
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">work</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-panel rounded-xl p-5 flex items-center justify-between transition-all duration-300 stat-card-glow relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-secondary to-primary opacity-50 group-hover:opacity-100 transition-opacity"></div>
+<div class="flex flex-col text-left pl-3">
+<span class="font-headline-md text-headline-md text-on-surface mb-1">850+</span>
+<span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase">Top Companies</span>
+</div>
+<div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center border border-secondary/20">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">apartment</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="glass-panel rounded-xl p-5 flex items-center justify-between transition-all duration-300 stat-card-glow relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-tertiary to-primary opacity-50 group-hover:opacity-100 transition-opacity"></div>
+<div class="flex flex-col text-left pl-3">
+<span class="font-headline-md text-headline-md text-on-surface mb-1">24/7</span>
+<span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase">Concierge Support</span>
+</div>
+<div class="w-12 h-12 rounded-full bg-tertiary/10 flex items-center justify-center border border-tertiary/20">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">support_agent</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Navigation Drawer / Bottom Bar for Mobile -->
+<nav class="md:hidden fixed bottom-0 w-full bg-surface-container-low dark:bg-surface-container-low backdrop-blur-2xl border-t border-white/5 shadow-none pb-safe pt-2 px-2 z-50">
+<ul class="flex justify-around items-center h-16">
+<li class="flex-1 flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-on-surface transition-all duration-200">
+<span class="material-symbols-outlined">work</span>
+<span class="font-label-sm text-label-sm text-[10px]">Opportunities</span>
+</li>
+<li class="flex-1 flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-on-surface transition-all duration-200">
+<span class="material-symbols-outlined">hub</span>
+<span class="font-label-sm text-label-sm text-[10px]">Network</span>
+</li>
+<li class="flex-1 flex flex-col items-center justify-center gap-1 bg-primary-container text-on-primary-container rounded-xl py-1 mx-1 scale-95 duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="font-label-sm text-label-sm text-[10px]">Explore</span>
+</li>
+<li class="flex-1 flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-on-surface transition-all duration-200">
+<span class="material-symbols-outlined">visibility</span>
+<span class="font-label-sm text-label-sm text-[10px]">Insights</span>
+</li>
+<li class="flex-1 flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-on-surface transition-all duration-200">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm text-[10px]">Settings</span>
+</li>
+</ul>
+</nav>
+</body></html>

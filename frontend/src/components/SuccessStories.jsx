@@ -38,7 +38,7 @@ const StoryCard = ({ story }) => {
         borderColor: "rgb(99, 102, 241)"
       }}
       whileTap={{ scale: 0.98 }}
-      className="story-card bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800"
+      className="story-card"
     >
       <div className="story-image">
         <img src={story.image} alt={story.title} />
@@ -83,7 +83,7 @@ const SectionHeader = () => {
       transition={{ duration: 0.6 }}
       className="section-header"
     >
-      <div className="section-badge bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800/50">
+      <div className="section-badge">
         <Star size={16} fill="currentColor" />
         <span>Success Stories</span>
       </div>
@@ -176,7 +176,7 @@ const SuccessStories = () => {
   ];
 
   return (
-    <section className="success-stories bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900 py-20 border-t border-gray-100 dark:border-gray-800">
+    <section className="success-stories">
       <div className="container mx-auto px-4">
         <SectionHeader />
       </div>

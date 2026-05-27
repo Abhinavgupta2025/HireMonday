@@ -34,33 +34,29 @@ const StudentCard = ({ student }) => {
   return (
     <motion.div
       variants={itemVariants}
-      whileHover={{ 
-        y: -8, 
-        boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-        borderColor: "rgba(99, 102, 241, 0.5)"
-      }}
+      whileHover={{ y: -6 }}
       whileTap={{ scale: 0.98 }}
-      className="relative overflow-hidden transition-all duration-300 bg-white border border-gray-200 rounded-xl hover:shadow-xl group dark:bg-gray-900 dark:border-gray-800"
+      className="premium-job-card rounded-2xl overflow-hidden group cursor-pointer w-full"
     >
       {/* Profile Image with Overlay */}
       <div className="relative h-40 overflow-hidden">
         <div
-          className="w-full h-full bg-center bg-cover transition-transform duration-500 group-hover:scale-110"
+          className="w-full h-full bg-center bg-cover transition-transform duration-700 ease-out group-hover:scale-105"
           style={{
             backgroundImage: `url(${student.profile?.profilePhoto || "https://via.placeholder.com/150"})`,
           }}
         ></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#090a0c]/90 via-[#090a0c]/20 to-transparent"></div>
         
         {/* Rating Badge */}
-        <div className="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 text-xs font-medium text-white bg-indigo-500 rounded-full">
+        <div className="absolute top-3 right-3 flex items-center gap-1 px-2.5 py-1 text-xs font-semibold text-black bg-[#d4af37] rounded-full shadow-md">
           <Star size={12} fill="currentColor" />
           <span>4.8</span>
         </div>
         
         {/* Location Badge */}
-        <div className="absolute bottom-3 left-3 flex items-center gap-1 px-2 py-1 text-xs font-medium text-white bg-black/50 backdrop-blur-sm rounded-full">
-          <MapPin size={12} />
+        <div className="absolute bottom-3 left-3 flex items-center gap-1 px-2.5 py-1 text-xs font-light text-gray-300 bg-black/60 backdrop-blur-sm rounded-full border border-white/5">
+          <MapPin size={12} className="text-[#d4af37]" />
           <span>Available Now</span>
         </div>
       </div>
@@ -69,32 +65,32 @@ const StudentCard = ({ student }) => {
       <div className="p-5 space-y-4">
         {/* Name and Title */}
         <div>
-          <h3 className="text-xl font-bold text-gray-800 group-hover:text-indigo-600 transition-colors dark:text-gray-100 dark:group-hover:text-indigo-400">
+          <h3 className="text-xl font-light text-gray-200 group-hover:text-[#d4af37] transition-colors duration-300">
             {student.fullname}
           </h3>
-          <div className="flex items-center gap-2 mt-1">
-            <span className="flex items-center gap-1 px-2 py-0.5 text-xs text-indigo-700 bg-indigo-100 rounded-full dark:bg-indigo-900/30 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800/50">
-              <FaUserGraduate size={12} /> {student.profile?.skills?.[0] || "Student"}
+          <div className="flex flex-wrap items-center gap-2 mt-2">
+            <span className="premium-card-badge-gold">
+              <FaUserGraduate className="mr-1" size={10} /> {student.profile?.skills?.[0] || "Student"}
             </span>
-            <span className="flex items-center gap-1 px-2 py-0.5 text-xs text-gray-600 bg-gray-100 rounded-full dark:bg-gray-800 dark:text-gray-400">
-              <Calendar size={12} /> 2+ years
+            <span className="premium-card-badge-silver">
+              <Calendar className="mr-1" size={10} /> 2+ years
             </span>
           </div>
         </div>
 
         {/* Bio Section */}
-        <div className="p-3 text-sm text-gray-600 bg-gray-50 rounded-lg border border-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700">
-          <p className="line-clamp-2">{student.profile?.bio || "Dream big. Hustle harder. 🚀"}</p>
+        <div className="p-3 text-sm text-gray-400 bg-white/5 rounded-xl border border-white/5">
+          <p className="line-clamp-2 font-light">{student.profile?.bio || "Dream big. Hustle harder. 🚀"}</p>
         </div>
 
         {/* Contact and Action Buttons */}
-        <div className="flex flex-col gap-2 pt-2">
-          <button className="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white transition-all duration-300 bg-gradient-to-r from-indigo-500 to-blue-600 rounded-lg hover:from-indigo-600 hover:to-blue-700 hover:shadow-lg hover:shadow-indigo-500/25">
-            <FaPhoneAlt size={14} /> {student.phoneNumber || "Contact"}
+        <div className="flex flex-col gap-2 pt-1">
+          <button className="flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold text-black transition-all duration-300 bg-gradient-to-r from-[#d4af37] to-[#aa771c] hover:from-[#aa771c] hover:to-[#8a5f14] rounded-xl shadow-lg shadow-amber-500/10 border-none">
+            <FaPhoneAlt size={12} /> {student.phoneNumber || "Contact"}
           </button>
           
-          <button className="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-indigo-600 transition-all duration-300 border border-indigo-200 dark:border-indigo-800 rounded-lg hover:bg-indigo-50 dark:hover:bg-indigo-900/30 dark:text-indigo-400">
-            <FaCheckCircle size={14} /> View Profile
+          <button className="flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-light text-[#d4af37] border border-[#d4af37]/25 rounded-xl hover:bg-[#d4af37]/10 transition-all duration-300 bg-white/5">
+            <FaCheckCircle size={12} /> View Profile
           </button>
         </div>
       </div>
@@ -111,14 +107,14 @@ const SectionHeader = () => {
       transition={{ duration: 0.6 }}
       className="text-center mb-16"
     >
-      <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-4 text-sm font-medium text-indigo-700 bg-indigo-100/80 rounded-full dark:bg-indigo-900/40 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800/50">
+      <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-4 text-sm font-light text-[#d4af37] bg-[#d4af37]/10 rounded-full border border-[#d4af37]/20">
         <Sparkles size={16} />
         <span>Top Rated Workers</span>
       </div>
-      <h2 className="text-4xl font-bold tracking-tight text-gray-800 md:text-5xl dark:text-gray-100">
-        Meet Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-blue-500 dark:from-indigo-400 dark:to-blue-400">Expert Workers</span>
+      <h2 className="text-4xl md:text-5xl text-gray-300 font-light tracking-wide mb-6">
+        Meet Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#fcd34d] to-[#d4af37] font-normal">Expert Workers</span>
       </h2>
-      <p className="max-w-2xl mx-auto mt-4 text-lg text-gray-600 dark:text-gray-400">
+      <p className="max-w-2xl mx-auto mt-4 text-lg text-gray-400 font-light">
         Discover skilled professionals ready to help with your projects
       </p>
     </motion.div>
@@ -141,7 +137,7 @@ const StudentsList = () => {
   }, []);
 
   return (
-    <section className="w-full px-4 py-20 mx-auto bg-gradient-to-b from-gray-50 to-white sm:px-6 lg:px-8 dark:from-gray-950 dark:to-gray-900">
+    <section className="w-full px-4 py-20 mx-auto bg-[#090a0c] sm:px-6 lg:px-8">
       <div className="px-4 mx-auto max-w-7xl">
         <SectionHeader />
 
@@ -158,11 +154,11 @@ const StudentsList = () => {
         
         {students.length === 0 && (
           <div className="flex flex-col items-center justify-center p-12 text-center">
-            <div className="p-4 mb-4 text-indigo-500 bg-indigo-100 rounded-full dark:bg-indigo-900/30 dark:text-indigo-400">
+            <div className="p-4 mb-4 text-[#d4af37] bg-[#d4af37]/10 rounded-full">
               <FaUserTie size={32} />
             </div>
-            <h3 className="mb-2 text-xl font-semibold text-gray-800 dark:text-gray-100">No Workers Available</h3>
-            <p className="text-gray-600 dark:text-gray-400">Check back later for new worker profiles</p>
+            <h3 className="mb-2 text-xl font-light text-gray-300">No Workers Available</h3>
+            <p className="text-gray-500">Check back later for new worker profiles</p>
           </div>
         )}
       </div>

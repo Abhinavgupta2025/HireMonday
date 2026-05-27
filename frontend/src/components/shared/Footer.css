@@ -1,6 +1,6 @@
 .footer {
-  background: linear-gradient(to bottom, var(--background-color), var(--background-color-dark));
-  color: var(--text-color);
+  background: #090a0c !important;
+  color: #f1f5f9 !important;
   padding: 4rem 0 0;
   position: relative;
   overflow: hidden;
@@ -13,8 +13,8 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(to right, transparent, var(--primary-color), transparent);
-  opacity: 0.3;
+  background: linear-gradient(to right, transparent, #d4af37, transparent) !important;
+  opacity: 0.35;
 }
 
 .footer-content {
@@ -25,7 +25,7 @@
 
 .footer-content-wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
   gap: 2.5rem;
   margin-bottom: 3rem;
 }
@@ -39,7 +39,7 @@
 .footer-title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--primary-color);
+  color: #d4af37 !important;
   margin-bottom: 1rem;
   position: relative;
   padding-bottom: 0.5rem;
@@ -52,7 +52,7 @@
   left: 0;
   width: 40px;
   height: 2px;
-  background: var(--primary-color);
+  background: #d4af37 !important;
   border-radius: 2px;
 }
 
@@ -72,7 +72,7 @@
 }
 
 .footer-links li a {
-  color: var(--text-color-light);
+  color: #94a3b8 !important;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -81,7 +81,7 @@
 }
 
 .footer-links li a:hover {
-  color: var(--primary-color);
+  color: #d4af37 !important;
   transform: translateX(5px);
 }
 
@@ -113,11 +113,11 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: var(--primary-color-light);
+  background: rgba(212, 175, 55, 0.1) !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--primary-color);
+  color: #d4af37 !important;
   flex-shrink: 0;
 }
 
@@ -136,37 +136,38 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--background-color-light);
+  background: rgba(255, 255, 255, 0.05) !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-color);
+  color: #f1f5f9 !important;
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
 .social-icon:hover {
-  background: var(--primary-color);
-  color: white;
+  background: #d4af37 !important;
+  color: black !important;
   transform: translateY(-5px);
 }
 
 .newsletter {
-  background: var(--background-color-light);
+  background: #111317 !important;
   padding: 1.5rem;
   border-radius: 12px;
   margin-top: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .newsletter-title {
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: var(--text-color);
+  color: #f1f5f9 !important;
 }
 
 .newsletter-description {
-  color: var(--text-color-light);
+  color: #94a3b8 !important;
   font-size: 0.9rem;
   margin-bottom: 1rem;
 }
@@ -179,37 +180,39 @@
 .newsletter-input {
   flex: 1;
   padding: 0.75rem 1rem;
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
   border-radius: 8px;
-  background: var(--background-color);
-  color: var(--text-color);
+  background: #16181d !important;
+  color: #f1f5f9 !important;
   font-size: 0.9rem;
 }
 
 .newsletter-input:focus {
   outline: none;
-  border-color: var(--primary-color);
+  border-color: #d4af37 !important;
 }
 
 .newsletter-button {
   padding: 0.75rem 1.5rem;
-  background: var(--primary-color);
-  color: white;
+  background: bg-gradient-to-r from-[#d4af37] to-[#aa771c];
+  background-image: linear-gradient(180deg, #d4af37 0%, #aa771c 100%);
+  color: black !important;
   border: none;
   border-radius: 8px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .newsletter-button:hover {
-  background: var(--primary-color-dark);
+  background-image: linear-gradient(180deg, #aa771c 0%, #8a5f14 100%);
 }
 
 .footer-bottom {
-  background: var(--background-color-dark);
+  background: #050608 !important;
   padding: 1.5rem 0;
   margin-top: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 
 .footer-bottom-content {
@@ -224,7 +227,7 @@
 }
 
 .copyright {
-  color: var(--text-color-light);
+  color: #94a3b8 !important;
   font-size: 0.9rem;
 }
 
@@ -234,14 +237,14 @@
 }
 
 .footer-legal-links a {
-  color: var(--text-color-light);
+  color: #94a3b8 !important;
   text-decoration: none;
   font-size: 0.9rem;
   transition: color 0.3s ease;
 }
 
 .footer-legal-links a:hover {
-  color: var(--primary-color);
+  color: #d4af37 !important;
 }
 
 @media (max-width: 768px) {

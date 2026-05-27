@@ -4,6 +4,7 @@ import { Label } from './ui/label';
 import { useDispatch } from 'react-redux';
 import { setSearchedQuery } from '@/redux/jobSlice';
 import { SlidersHorizontal, X } from 'lucide-react';
+import './auth/auth.css';
 
 const filterData = [
   {
@@ -36,48 +37,50 @@ const FilterCard = ({ isVisible, onClose }) => {
 
   useEffect(() => {
     dispatch(setSearchedQuery(selectedValue));
-  }, [selectedValue]);
+  }, [selectedValue, dispatch]);
 
   if (!isVisible) return null;
 
   return (
-    <div className="fixed top-20 left-5 w-64 bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-100 dark:border-gray-800 z-50 animate-fadeIn overflow-hidden">
-      <div className="bg-gradient-to-r from-indigo-600 to-indigo-700 p-4">
+    <div className="fixed top-24 left-5 w-64 auth-glass-panel rounded-2xl z-50 overflow-hidden shadow-2xl">
+      <div className="bg-[#111317]/80 border-b border-white/5 p-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <SlidersHorizontal className="h-5 w-5 text-white" />
-            <h1 className="text-lg font-semibold text-white">Filter Jobs</h1>
+          <div className="flex items-center gap-2.5">
+            <SlidersHorizontal className="h-4.5 w-4.5 text-[#d4af37]" />
+            <h1 className="text-sm font-medium text-gray-200 tracking-wider uppercase">Filter Jobs</h1>
           </div>
           <button 
             onClick={onClose}
-            className="p-1 rounded-full hover:bg-indigo-800 transition-colors"
+            className="p-1.5 rounded-full hover:bg-white/5 transition-colors"
           >
-            <X className="h-5 w-5 text-white" />
+            <X className="h-4 w-4 text-gray-400 hover:text-white transition-colors" />
           </button>
         </div>
       </div>
 
-      <div className="p-4 overflow-y-auto h-[calc(70vh-4rem)] custom-scrollbar">
+      <div className="p-5 overflow-y-auto h-[calc(70vh-4rem)] scrollbar-none space-y-6">
         <RadioGroup value={selectedValue} onValueChange={changeHandler}>
           {filterData.map((data, index) => (
-            <div key={index} className="mb-6">
-              <h2 className="mb-3 text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">{data.fitlerType}</h2>
-              <div className="space-y-2">
+            <div key={index} className="space-y-3">
+              <h2 className="text-xs font-semibold text-[#d4af37] uppercase tracking-widest font-mono border-b border-white/5 pb-1">{data.fitlerType}</h2>
+              <div className="space-y-1.5">
                 {data.array.map((item, idx) => {
                   const itemId = `id${index}-${idx}`;
+                  const isSelected = selectedValue === item;
                   return (
                     <div
                       key={itemId}
-                      className="flex items-center gap-2 py-1.5 px-2 rounded-lg transition-colors duration-200 hover:bg-indigo-50 dark:hover:bg-indigo-900/30"
+                      onClick={() => changeHandler(item)}
+                      className={`flex items-center gap-3 py-2.5 px-3 rounded-xl transition-all duration-200 border cursor-pointer group ${isSelected ? 'bg-[#d4af37]/10 border-[#d4af37]/35 shadow-sm shadow-[#d4af37]/5' : 'bg-transparent border-transparent hover:bg-white/5 hover:border-white/5'}`}
                     >
                       <RadioGroupItem
                         value={item}
                         id={itemId}
-                        className="accent-indigo-600"
+                        className={`accent-[#d4af37] border-white/20 text-[#d4af37] focus:ring-0 focus:ring-offset-0 ${isSelected ? 'border-[#d4af37]' : ''}`}
                       />
                       <Label
                         htmlFor={itemId}
-                        className="text-sm text-gray-700 dark:text-gray-300 cursor-pointer"
+                        className={`text-sm cursor-pointer transition-colors duration-200 font-light ${isSelected ? 'text-white font-medium' : 'text-gray-400 group-hover:text-gray-200'}`}
                       >
                         {item}
                       </Label>

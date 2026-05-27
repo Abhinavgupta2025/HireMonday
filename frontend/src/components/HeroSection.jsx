@@ -1,46 +1,9 @@
-import { useState } from 'react';
-import { Search, ArrowRight, MapPin, Briefcase, Sparkles, Building2, Users, Clock } from 'lucide-react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setSearchedQuery } from '@/redux/jobSlice';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectFade } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/autoplay';
-import 'swiper/css/effect-fade';
-
-// Stats Card Component
-const StatCard = ({ icon: Icon, value, label }) => (
-  <motion.div 
-    className="flex flex-col items-center justify-center p-4 bg-white/10 backdrop-blur-md rounded-xl border border-white/20"
-    whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
-    transition={{ type: "spring", stiffness: 300 }}
-  >
-    <div className="p-2 mb-2 text-indigo-400 bg-white/10 rounded-full">
-      <Icon size={20} />
-    </div>
-    <span className="text-2xl font-bold text-white">{value}</span>
-    <span className="text-sm text-gray-300">{label}</span>
-  </motion.div>
-);
-
-// Feature Card Component
-const FeatureCard = ({ icon: Icon, title, description }) => (
-  <motion.div 
-    className="flex items-start p-4 bg-white/10 backdrop-blur-md rounded-xl border border-white/20"
-    whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
-    transition={{ type: "spring", stiffness: 300 }}
-  >
-    <div className="p-2 mr-4 text-indigo-400 bg-white/10 rounded-full">
-      <Icon size={20} />
-    </div>
-    <div>
-      <h3 className="mb-1 text-lg font-semibold text-white">{title}</h3>
-      <p className="text-sm text-gray-300">{description}</p>
-    </div>
-  </motion.div>
-);
+import { Search, MapPin, Briefcase, Globe, Shield } from 'lucide-react';
+import './hero.css';
 
 const HeroSection = () => {
     const [query, setQuery] = useState('');
@@ -48,161 +11,94 @@ const HeroSection = () => {
     const navigate = useNavigate();
 
     const searchJobHandler = () => {
-        dispatch(setSearchedQuery(query));
-        navigate('/browse');
+        if (query.trim()) {
+            dispatch(setSearchedQuery(query));
+            navigate('/browse');
+        }
     };
 
-    // Array of background images to be used dynamically
-    const backgroundImage = [
-        'https://images.unsplash.com/photo-1485083269755-a7b559a4fe5e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y29uc3RydWN0aW9ufGVufDB8MHwwfHx8MA%3D%3D',
-    ];
-
-    // Select one random image from the array for background
-    const selectedImage = backgroundImage[Math.floor(Math.random() * backgroundImage.length)];
-
     return (
-        <Swiper
-            loop={false}
-            slidesPerView={1}
-            autoHeight={true}
-            modules={[Autoplay, EffectFade]}
-            effect="fade"
-            autoplay={{
-                delay: 5000,
-                disableOnInteraction: false,
-            }}
-            className="relative w-full min-h-screen overflow-hidden"
-        >
-            <SwiperSlide>
-                <div className="relative flex flex-col items-center justify-center min-h-[100svh] px-4 py-32 text-center">
-                    {/* Background Image with Overlay */}
-                    <div
-                        className="absolute inset-0 w-full h-full bg-center bg-cover"
-                        style={{
-                            backgroundImage: `url(${selectedImage})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                        }}
-                    ></div>
-                    
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
-                    
-                    {/* Decorative Elements */}
-                    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.15),transparent_50%)]"></div>
-                        <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.15),transparent_50%)]"></div>
-                    </div>
+        <div className="relative w-full min-h-screen overflow-hidden hero-dark-bg text-gray-100 font-sans flex flex-col items-center pt-28 pb-20 px-4 md:px-16">
+            
+            <div className="relative z-10 flex flex-col items-center text-center mt-6 mb-16 w-full">
+                <h1 className="text-4xl md:text-6xl text-gray-300 mb-6 max-w-4xl leading-tight font-light tracking-wide">
+                    Curated Opportunities for <br/>
+                    <span className="gold-text font-normal">Elite Professionals</span>
+                </h1>
+                <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 font-light">
+                    Exclusive access to board-level and executive roles at the world's most prestigious organizations.
+                </p>
 
-                    {/* Content Container */}
-                    <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-5xl mx-auto">
-                        {/* Badge */}
-                        <motion.div
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.2, duration: 0.5 }}
-                            className="inline-flex items-center gap-1.5 px-4 py-1.5 mb-6 text-sm font-medium text-white bg-white/10 backdrop-blur-md rounded-full border border-white/20"
-                        >
-                            <Sparkles size={16} className="text-indigo-400" />
-                            <span>Find Your Next Opportunity</span>
-                        </motion.div>
-
-                        {/* Heading */}
-                        <motion.div 
-                            className="flex flex-col gap-3 mb-10"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3, duration: 0.6 }}
-                        >
-                            <h1 className="text-4xl font-bold tracking-tight text-white md:text-6xl lg:text-7xl">
-                                <span className="block">Find Skilled</span>
-                                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-blue-400">Labor Workers</span>
-                                <span className="block">Near You  CI/CD</span>
-                            </h1>
-                            <p className="max-w-2xl mx-auto mt-4 text-lg text-gray-300 md:text-xl">
-                                Connect with qualified professionals for your projects or find work opportunities in your area
-                            </p>
-                        </motion.div>
-
-                        {/* Search Box */}
-                        <motion.div
-                            className="z-10 flex items-center justify-center w-full px-4 mb-8"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.5, duration: 0.6, ease: 'easeOut' }}
-                        >
-                            <div className="flex w-full max-w-2xl shadow-xl rounded-full items-center gap-2 mx-auto overflow-hidden bg-white p-2">
-                                <div className="pl-4 text-gray-400">
-                                    <Search size={22} />
-                                </div>
-                                <input
-                                    type="text"
-                                    value={query}
-                                    onChange={(e) => setQuery(e.target.value)}
-                                    placeholder="Search for jobs, companies, or skills..."
-                                    className="outline-none border-none w-full py-3 text-gray-800 bg-transparent placeholder-gray-400 font-medium text-lg"
-                                />
-                                <button
-                                    onClick={searchJobHandler}
-                                    className="bg-indigo-600 hover:bg-indigo-700 transition-colors text-white px-8 py-3 rounded-full font-bold shadow-md whitespace-nowrap flex items-center gap-2"
-                                >
-                                    <Search size={18} />
-                                    <span>Search</span>
-                                </button>
-                            </div>
-                        </motion.div>
-
-                        {/* Stats Section */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.6, duration: 0.5 }}
-                            className="grid grid-cols-1 gap-4 mb-8 md:grid-cols-3"
-                        >
-                            <StatCard icon={Building2} value="500+" label="Companies" />
-                            <StatCard icon={Users} value="10,000+" label="Workers" />
-                            <StatCard icon={Clock} value="24/7" label="Support" />
-                        </motion.div>
-
-                        {/* Features Section */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.7, duration: 0.5 }}
-                            className="grid grid-cols-1 gap-4 mb-8 md:grid-cols-2"
-                        >
-                            <FeatureCard 
-                                icon={MapPin} 
-                                title="Local Opportunities" 
-                                description="Find work in your neighborhood with our location-based search" 
+                {/* Search Interface */}
+                <div className="w-full max-w-3xl mb-16">
+                    <div className="glass-input rounded-2xl p-2 flex flex-col md:flex-row gap-2">
+                        <div className="flex-1 flex items-center px-4 py-3 bg-transparent">
+                            <Search className="text-gray-500 mr-4" size={20} />
+                            <input
+                                type="text"
+                                value={query}
+                                onChange={(e) => setQuery(e.target.value)}
+                                className="w-full bg-transparent border-none text-gray-300 focus:ring-0 focus:outline-none placeholder-gray-500 text-lg p-0 font-light"
+                                placeholder="Role, industry, or firm"
                             />
-                            <FeatureCard 
-                                icon={Briefcase} 
-                                title="Verified Workers" 
-                                description="All workers are background-checked and skill-verified" 
+                        </div>
+                        <div className="hidden md:block w-px h-10 bg-white/10 self-center"></div>
+                        <div className="md:hidden h-[1px] w-[95%] mx-auto bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+                        <div className="flex-1 flex items-center px-4 py-3 bg-transparent">
+                            <MapPin className="text-gray-500 mr-4" size={20} />
+                            <input
+                                type="text"
+                                className="w-full bg-transparent border-none text-gray-300 focus:ring-0 focus:outline-none placeholder-gray-500 text-lg p-0 font-light"
+                                placeholder="Global or Remote"
                             />
-                        </motion.div>
-
-                        {/* Quick Links */}
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.8, duration: 0.5 }}
-                            className="flex flex-wrap items-center justify-center gap-4 mt-4"
+                        </div>
+                        <button
+                            onClick={searchJobHandler}
+                            className="premium-button text-gray-300 rounded-xl px-8 py-4 mt-2 md:mt-0 flex items-center justify-center gap-3 uppercase tracking-widest text-xs font-medium hover:text-white"
                         >
-                            <div className="flex items-center gap-2 px-4 py-2 text-sm text-white bg-white/10 backdrop-blur-md rounded-full border border-white/20">
-                                <MapPin size={16} className="text-indigo-400" />
-                                <span>Local Jobs</span>
-                            </div>
-                            <div className="flex items-center gap-2 px-4 py-2 text-sm text-white bg-white/10 backdrop-blur-md rounded-full border border-white/20">
-                                <Briefcase size={16} className="text-blue-400" />
-                                <span>Popular Categories</span>
-                            </div>
-                        </motion.div>
+                            Initiate Search
+                            <Search className="text-[#fbbf24]" size={16} />
+                        </button>
                     </div>
                 </div>
-            </SwiperSlide>
-        </Swiper>
+
+                {/* Stat Cards */}
+                <div className="w-full max-w-5xl flex flex-col md:flex-row gap-4">
+                    {/* Card 1 */}
+                    <div className="flex-1 stat-card rounded-2xl p-6 flex items-center justify-between group">
+                        <div className="flex flex-col text-left">
+                            <span className="text-2xl md:text-3xl text-gray-300 mb-1 font-light tracking-wide">$250k+</span>
+                            <span className="text-xs text-gray-500 tracking-widest uppercase font-medium">Minimum Compensation</span>
+                        </div>
+                        <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-[#fbbf24]/30 transition-colors">
+                            <Briefcase className="text-gray-400 group-hover:text-[#fbbf24] transition-colors" size={24} />
+                        </div>
+                    </div>
+
+                    {/* Card 2 */}
+                    <div className="flex-1 stat-card rounded-2xl p-6 flex items-center justify-between group">
+                        <div className="flex flex-col text-left">
+                            <span className="text-2xl md:text-3xl text-gray-300 mb-1 font-light tracking-wide">Top 1%</span>
+                            <span className="text-xs text-gray-500 tracking-widest uppercase font-medium">Global Network</span>
+                        </div>
+                        <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-[#fbbf24]/30 transition-colors">
+                            <Globe className="text-gray-400 group-hover:text-[#fbbf24] transition-colors" size={24} />
+                        </div>
+                    </div>
+
+                    {/* Card 3 */}
+                    <div className="flex-1 stat-card rounded-2xl p-6 flex items-center justify-between group">
+                        <div className="flex flex-col text-left">
+                            <span className="text-2xl md:text-3xl text-gray-300 mb-1 font-light tracking-wide">Discrete</span>
+                            <span className="text-xs text-gray-500 tracking-widest uppercase font-medium">Private Representation</span>
+                        </div>
+                        <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-[#fbbf24]/30 transition-colors">
+                            <Shield className="text-gray-400 group-hover:text-[#fbbf24] transition-colors" size={24} />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 };
 

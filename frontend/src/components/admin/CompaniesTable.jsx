@@ -7,6 +7,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { motion, AnimatePresence } from 'framer-motion';
+import './CompanySetup.css';
 
 // Animation variants
 const containerVariants = {
@@ -14,20 +15,20 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1
+      staggerChildren: 0.08
     }
   }
 };
 
 const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
+  hidden: { y: 15, opacity: 0 },
   visible: {
     y: 0,
     opacity: 1,
     transition: {
       type: "spring",
-      stiffness: 300,
-      damping: 24
+      stiffness: 150,
+      damping: 18
     }
   }
 };
@@ -40,84 +41,64 @@ const TableHeader = ({ title, subtitle }) => (
     transition={{ duration: 0.6 }}
     className="mb-8"
   >
-    <h2 className="text-3xl md:text-4xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 mb-2">
+    <h2 className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-[#d4af37] mb-2 tracking-wide uppercase">
       {title}
     </h2>
-    {subtitle && <p className="text-center text-gray-300">{subtitle}</p>}
+    {subtitle && <p className="text-gray-400 font-light text-sm">{subtitle}</p>}
   </motion.div>
 );
 
 const SearchBar = ({ value, onChange }) => (
-  <div className="relative mb-6">
-    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+  <div className="relative w-full sm:w-80 mb-2">
+    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
     <Input
       type="text"
       placeholder="Search companies..."
       value={value}
       onChange={onChange}
-      className="pl-10 pr-4 py-2 w-full rounded-lg border border-white/20 bg-white/10 text-white placeholder-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/50 transition-all"
+      className="pl-10 pr-4 py-2 w-full admin-glass-input rounded-xl text-sm"
     />
   </div>
-);
-
-const ActionButton = ({ icon, label, onClick, variant = "default" }) => (
-  <Button
-    onClick={onClick}
-    variant={variant}
-    className={`flex items-center gap-2 ${
-      variant === "outline" 
-        ? "border border-gray-200 hover:bg-gray-50" 
-        : "bg-blue-600 hover:bg-blue-700 text-white"
-    }`}
-  >
-    {icon}
-    <span>{label}</span>
-  </Button>
 );
 
 const CompanyRow = ({ company, index, onEdit }) => (
   <motion.tr
     key={company._id}
-    initial={{ opacity: 0, scale: 0.95 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ delay: index * 0.05 }}
-    whileHover={{ scale: 1.01, backgroundColor: "rgba(255, 255, 255, 0.05)" }}
-    className="hover:bg-white/5 transition-all duration-300"
+    variants={itemVariants}
+    className="admin-table-row"
   >
     <td className="px-6 py-4">
-      <Avatar className="w-10 h-10 border border-white/20 shadow-md">
-        <AvatarImage src={company.logo} className="object-cover rounded-full" />
+      <Avatar className="w-10 h-10 border border-[#d4af37]/30 shadow-lg rounded-full overflow-hidden bg-black/40">
+        <AvatarImage src={company.logo} className="object-cover w-full h-full" />
       </Avatar>
     </td>
     <td className="px-6 py-4">
       <div>
-        <div className="text-lg font-semibold tracking-wide text-white">{company.name}</div>
-        <div className="text-sm text-gray-400">{company.email}</div>
+        <div className="text-base font-semibold tracking-wide text-white">{company.name}</div>
+        <div className="text-xs text-gray-400 font-light">{company.email || "No email registered"}</div>
       </div>
     </td>
     <td className="px-6 py-4">
-      <div className="flex items-center gap-2 text-gray-300">
-        <Calendar size={16} />
-        <span className="text-sm">{company.createdAt.split('T')[0]}</span>
+      <div className="flex items-center gap-2 text-gray-400">
+        <Calendar size={14} className="text-[#d4af37]" />
+        <span className="text-xs font-mono">{company.createdAt ? company.createdAt.split('T')[0] : "N/A"}</span>
       </div>
     </td>
     <td className="px-6 py-4 text-right">
       <Popover>
         <PopoverTrigger asChild>
-          <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full">
-            <MoreHorizontal className="h-4 w-4 text-gray-400 hover:text-indigo-400 transition-colors" />
+          <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full hover:bg-white/5">
+            <MoreHorizontal className="h-4 w-4 text-gray-400 hover:text-[#d4af37] transition-colors" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-48 bg-white border border-gray-200 text-gray-800 shadow-lg rounded-lg">
-          <div className="py-1">
-            <button
-              onClick={() => onEdit(company._id)}
-              className="flex items-center gap-2 px-3 py-2 w-full text-left hover:bg-gray-50 hover:text-blue-600 rounded-md transition"
-            >
-              <Edit2 className="w-4 h-4" />
-              <span>Edit Company</span>
-            </button>
-          </div>
+        <PopoverContent className="w-40 admin-glass-popover p-1 border border-white/10 text-slate-200">
+          <button
+            onClick={() => onEdit(company._id)}
+            className="flex items-center gap-2.5 px-3 py-2.5 w-full text-left admin-popover-item rounded-lg text-xs font-medium"
+          >
+            <Edit2 className="w-3.5 h-3.5" />
+            <span>Edit Company</span>
+          </button>
         </PopoverContent>
       </Popover>
     </td>
@@ -128,13 +109,13 @@ const EmptyState = () => (
   <motion.div
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
-    className="py-12 text-center"
+    className="py-16 text-center"
   >
     <div className="flex justify-center mb-4">
-      <Building2 size={48} className="text-gray-600" />
+      <Building2 size={44} className="text-gray-500" />
     </div>
-    <h3 className="text-xl font-semibold text-white mb-2">No companies found</h3>
-    <p className="text-gray-400 mb-6">There are no companies registered in the system yet.</p>
+    <h3 className="text-lg font-semibold text-white mb-1">No companies registered</h3>
+    <p className="text-sm text-gray-400 font-light max-w-sm mx-auto">Please add a company to start publishing executive job listings.</p>
   </motion.div>
 );
 
@@ -176,11 +157,11 @@ const CompaniesTable = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="w-full bg-white/10 rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.3)] border border-white/20 backdrop-blur-xl transition-all duration-500 px-6 sm:px-8 py-8 font-[Inter]"
+      className="w-full admin-glass-card rounded-2xl border border-white/10 px-6 sm:px-8 py-8"
     >
       <TableHeader 
-        title="🔥 Registered Companies" 
-        subtitle="Manage and view all companies registered on the platform"
+        title="Registered Companies" 
+        subtitle="Manage and view your organizations listed on HireMonday"
       />
 
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
@@ -188,34 +169,36 @@ const CompaniesTable = () => {
       </div>
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="rounded-xl bg-white/5 border border-white/10 overflow-hidden"
+        className="rounded-xl bg-black/20 border border-white/5 overflow-hidden"
       >
         {filterCompany.length > 0 ? (
-          <table className="w-full text-sm text-left text-white">
-            <thead className="text-xs text-gray-300 uppercase bg-white/10 tracking-wider">
-              <tr>
-                <th className="px-6 py-4">Logo</th>
-                <th className="px-6 py-4">Company</th>
-                <th className="px-6 py-4">Date</th>
-                <th className="px-6 py-4 text-right">Action</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-white/10">
-              <AnimatePresence>
-                {filterCompany.map((company, index) => (
-                  <CompanyRow 
-                    key={company._id} 
-                    company={company} 
-                    index={index} 
-                    onEdit={handleEdit} 
-                  />
-                ))}
-              </AnimatePresence>
-            </tbody>
-          </table>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm text-left text-white min-w-[500px]">
+              <thead className="text-xs text-gray-400 uppercase bg-white/5 tracking-wider">
+                <tr>
+                  <th className="px-6 py-4 font-semibold">Logo</th>
+                  <th className="px-6 py-4 font-semibold">Company</th>
+                  <th className="px-6 py-4 font-semibold">Date Registered</th>
+                  <th className="px-6 py-4 font-semibold text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/5">
+                <AnimatePresence>
+                  {filterCompany.map((company, index) => (
+                    <CompanyRow 
+                      key={company._id} 
+                      company={company} 
+                      index={index} 
+                      onEdit={handleEdit} 
+                    />
+                  ))}
+                </AnimatePresence>
+              </tbody>
+            </table>
+          </div>
         ) : (
           <EmptyState />
         )}

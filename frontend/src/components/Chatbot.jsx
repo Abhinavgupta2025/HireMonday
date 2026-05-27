@@ -62,7 +62,7 @@ function Chatbot() {
 
       {/* Chatbot Container */}
       <div
-        className={`fixed bottom-20 right-5 w-96 bg-white rounded-2xl shadow-2xl transform transition-all duration-300 ease-in-out z-50 overflow-hidden border border-gray-100 ${isOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-5 pointer-events-none"}`}
+        className={`fixed bottom-20 right-5 w-[calc(100vw-40px)] sm:w-96 bg-white rounded-2xl shadow-2xl transform transition-all duration-300 ease-in-out z-50 overflow-hidden border border-gray-100 ${isOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-5 pointer-events-none"}`}
       >
         {/* Header */}
         <div className="py-4 px-5 bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-between">

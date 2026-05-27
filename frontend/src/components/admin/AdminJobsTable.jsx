@@ -2,17 +2,16 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { 
-  MoreHorizontal, 
-  Eye, 
   Building2, 
   Briefcase, 
   Calendar, 
   Users, 
   FileText,
-  ArrowRight,
+  Eye,
   Plus
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import './CompanySetup.css';
 
 // Animation variants
 const containerVariants = {
@@ -20,20 +19,20 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1
+      staggerChildren: 0.08
     }
   }
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 15 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       type: "spring",
-      stiffness: 300,
-      damping: 24
+      stiffness: 150,
+      damping: 18
     }
   }
 };
@@ -46,72 +45,69 @@ const PageHeader = ({ title, subtitle }) => (
     transition={{ duration: 0.6 }}
     className="mb-8"
   >
-    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-      <div>
-        <h2 className="text-3xl md:text-4xl font-bold text-indigo-600 tracking-wide font-sans">
-          {title}
-        </h2>
-        {subtitle && <p className="text-gray-500 mt-2 font-medium">{subtitle}</p>}
-      </div>
-    </div>
+    <h2 className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-[#d4af37] tracking-wide uppercase">
+      {title}
+    </h2>
+    {subtitle && <p className="text-gray-400 mt-2 text-sm font-light">{subtitle}</p>}
   </motion.div>
 );
 
 const JobCard = ({ job, index, onViewApplicants }) => {
+  const applicantCount = job?.applicants?.length || job?.applications?.length || 0;
+  
   return (
     <motion.div
       variants={itemVariants}
-      className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow duration-300"
+      className="admin-glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between h-full p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
     >
-      <div className="p-5">
-        <div className="flex items-start justify-between">
-          <div className="flex items-center gap-3">
+      <div>
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex items-center gap-3.5">
             {job?.company?.logo ? (
               <img 
                 src={job?.company?.logo} 
                 alt={job?.company?.name} 
-                className="w-12 h-12 rounded-full object-cover border-2 border-indigo-100"
+                className="w-12 h-12 rounded-full object-cover border border-[#d4af37]/30 shadow-md bg-black/40"
               />
             ) : (
-              <div className="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center border-2 border-indigo-100">
-                <Building2 size={24} className="text-indigo-500" />
+              <div className="w-12 h-12 rounded-full bg-black/40 flex items-center justify-center border border-white/10 shadow-md">
+                <Building2 size={20} className="text-gray-400" />
               </div>
             )}
             <div>
-              <h3 className="text-lg font-semibold text-gray-800">{job?.title || 'Untitled Job'}</h3>
-              <p className="text-gray-600 font-medium">{job?.company?.name || 'Unknown Company'}</p>
+              <h3 className="text-base sm:text-lg font-bold text-white tracking-wide truncate max-w-[180px]">{job?.title || 'Untitled Job'}</h3>
+              <p className="text-xs sm:text-sm text-[#d4af37] font-semibold tracking-wider uppercase mt-0.5">{job?.company?.name || 'Unknown Company'}</p>
             </div>
           </div>
         </div>
         
-        <div className="mt-4 flex flex-wrap gap-3">
-          <div className="flex items-center gap-1 text-gray-600">
-            <Calendar size={16} className="text-indigo-500" />
-            <span className="text-sm font-medium">{job?.createdAt ? job?.createdAt.split("T")[0] : 'N/A'}</span>
+        {/* Metric Badges */}
+        <div className="mt-6 flex flex-wrap gap-2.5">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/5 text-gray-300 font-mono text-xs">
+            <Calendar size={13} className="text-[#d4af37]" />
+            <span>{job?.createdAt ? job?.createdAt.split("T")[0] : 'N/A'}</span>
           </div>
-          <div className="flex items-center gap-1 text-gray-600">
-            <Users size={16} className="text-indigo-500" />
-            <span className="text-sm font-medium">
-              {job?.applicants?.length || job?.applications?.length || 0} Applicants
-            </span>
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#d4af37]/5 border border-[#d4af37]/15 text-[#d4af37] font-mono text-xs">
+            <Users size={13} className="text-[#d4af37]" />
+            <span>{applicantCount} Applicant{applicantCount !== 1 ? 's' : ''}</span>
           </div>
           {job?.salary && (
-            <div className="flex items-center gap-1 text-gray-600">
-              <Briefcase size={16} className="text-indigo-500" />
-              <span className="text-sm font-medium">₹{job?.salary.toLocaleString()}</span>
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/5 text-gray-300 font-mono text-xs">
+              <Briefcase size={13} className="text-gray-400" />
+              <span>₹{job?.salary.toLocaleString()}</span>
             </div>
           )}
         </div>
-        
-        <div className="mt-4">
-          <button 
-            onClick={onViewApplicants}
-            className="w-full flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors duration-200"
-          >
-            <Eye size={16} />
-            <span>View Applicants</span>
-          </button>
-        </div>
+      </div>
+      
+      <div className="mt-6 pt-4 border-t border-white/5">
+        <button 
+          onClick={onViewApplicants}
+          className="admin-gold-btn w-full py-3.5 text-xs font-bold flex items-center justify-center gap-2 rounded-xl"
+        >
+          <Eye size={14} />
+          <span>View Applicants</span>
+        </button>
       </div>
     </motion.div>
   );
@@ -124,17 +120,17 @@ const EmptyState = () => {
     <motion.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="flex flex-col items-center justify-center p-12 bg-white rounded-xl shadow-md border border-gray-100"
+      className="flex flex-col items-center justify-center p-12 admin-glass-card rounded-2xl border border-white/10 text-center"
     >
-      <FileText size={64} className="mb-4 text-gray-300" />
-      <h3 className="text-xl font-semibold text-gray-700 mb-2">No job posts found</h3>
-      <p className="text-gray-500 text-center max-w-md mb-6">You haven't posted any jobs yet. Create your first job posting to start attracting candidates.</p>
+      <FileText size={56} className="mb-4 text-gray-500" />
+      <h3 className="text-lg font-semibold text-white mb-2">No posted jobs found</h3>
+      <p className="text-gray-400 text-sm font-light max-w-sm mb-6 mx-auto">Publish your first executive job listing to connect with elite industry experts.</p>
       <button 
-        onClick={() => navigate('/admin/post-job')}
-        className="flex items-center justify-center gap-2 px-6 py-3 text-white bg-indigo-600 rounded-lg shadow-md hover:bg-indigo-700 transition-colors duration-200"
+        onClick={() => navigate('/admin/jobs/create')}
+        className="admin-gold-btn px-6 py-3 rounded-xl text-xs flex items-center gap-1.5 shadow-lg"
       >
-        <Plus size={20} />
-        <span className="font-medium">Post a Job</span>
+        <Plus size={16} />
+        <span>Post a Job</span>
       </button>
     </motion.div>
   );
@@ -149,19 +145,19 @@ const AdminJobsTable = () => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="p-6"
+      className="admin-glass-card rounded-2xl border border-white/10 px-6 sm:px-8 py-8"
       style={{ marginBottom: "370px" }}
     >
       <PageHeader 
-        title="🔥 Your Job Posts" 
-        subtitle="Manage and track all your job listings"
+        title="Your Job Posts" 
+        subtitle="Manage and track active career opportunities"
       />
 
       <AnimatePresence>
         {allAdminJobs.length === 0 ? (
           <EmptyState />
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
             {allAdminJobs.map((job, index) => (
               <JobCard 
                 key={job._id}
